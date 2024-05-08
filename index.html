@@ -62,46 +62,158 @@
               <span class="sr-only">Close sidebar</span>
             </button>
           </div>
-          <nav class="flex flex-col flex-1 w-64 p-4 mt-4">
+          <style>
+            .menu-nav {
+                margin-bottom: 1rem; /* Atur margin bottom menu pertama */
+            }
+        
+            .menu-nav:last-child {
+                margin-bottom: 0; /* Hapus margin bottom pada menu terakhir */
+            }
+        </style>
+        
+        <nav class="flex flex-col flex-1 w-64 p-4 mt-4 menu-nav">
             <a href="https://skydev12.github.io/menu" class="flex items-center space-x-2">
-              <svg
-                class="w-6 h-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                />
-              </svg>
-              <span>Home</span>
+                <svg
+                    class="w-6 h-6"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                    />
+                </svg>
+                <span>Home</span>
             </a>
-          </nav>
-            <nav class="flex flex-col flex-1 w-64 p-4 mt-4">
+        </nav>
+        
+        <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+            <!-- Menambahkan margin-top di sini -->
             <a href="https://skydev12.github.io/kalku" class="flex items-center space-x-2">
-              <svg
+                <svg
+                    class="w-6 h-6"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 3C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H5ZM17 8H7M17 12H7M17 16H7M9 20V19M15 20V19"
+                    />
+                </svg>
+                <span>kalkulator</span>
+            </a>
+        </nav>
+        <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="https://skydev12.github.io/kalender" class="flex items-center space-x-2">
+            <svg
                 class="w-6 h-6"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                />
-              </svg>
-              <span>kalkulator</span>
-            </a>
-          </nav>
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zm10 0v4m-6-4v4m6 10v4m-6-4v4m-2-2h4m-4 6h4m6-10h4m-4 6h4"
+        />
+    </svg>
+    <span>Calendar</span>
+        </a>
+    </nav>
+    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="https://skydev12.github.io/solat" class="flex items-center space-x-2">
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 14l9-5-9-5-9 5 9 5zM5 12h13"
+        />
+    </svg>
+    <span>Waktu Solat</span>
+        </a>
+    </nav>
+    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="https://skydev12.github.io/marketplace" class="flex items-center space-x-2">
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 14l9-5-9-5-9 5 9 5zM5 12h13"
+        />
+    </svg>
+    <span>Marketplace</span>
+        </a>
+    </nav>
+    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="https://skydev12.github.io/musik" class="flex items-center space-x-2">
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+        />
+    </svg>
+    <span>Music</span>
+        </a>
+    </nav>
+    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="https://skydev12.github.io/elearning" class="flex items-center space-x-2">
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 10V3L4 14h7v7l9-11h-7z"
+        />
+    </svg>
+    <span>Sky-Learning</span>
+        </a>
+    </nav>
           <div class="flex-shrink-0 p-4">
             <button class="flex items-center space-x-2">
               <svg
@@ -142,7 +254,7 @@
 
             <div class="border-1 shadow-lg shadow-gray-700 rounded-lg">
         
-                <!-- top content -->
+                <!-- top content disini adalah isi nya -->
                   </div>
                 <div class="flex rounded-t-lg bg-top-color sm:px-2 w-full">
                     <div class="h-40 w-40 overflow-hidden sm:rounded-full sm:relative sm:p-0 top-10 left-5 p-3">
@@ -417,6 +529,7 @@
                 </div>
         
             </div>
+            <!-- disini akhir isi nya -->
         
         </div>
             <path
