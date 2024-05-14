@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>risky</title>
+</head>
+<body>
+    <!-- component -->
+<div x-data="setup()" x-init="$refs.loading.classList.add('hidden');">
+    <div class="flex h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
+      <!-- Loading screen -->
+      <div
+        x-ref="loading"
+        class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-blue-600"
+      >
+        Loadinga saudaraku.....
+      </div>
+
+      <!-- Sidebar -->
+      <div
+        x-transition:enter="transform transition-transform duration-300"
+        x-transition:enter-start="-translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transform transition-transform duration-300"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="-translate-x-full"
+        x-show="isSidebarOpen"
+        class="fixed inset-y-0 z-10 flex w-80"
+      >
+        <!-- Curvy shape -->
+        <svg
+          class="absolute inset-0 w-full h-full text-white"
+          style="filter: drop-shadow(10px 0 10px #00000030)"
+          preserveAspectRatio="none"
+          viewBox="0 0 309 800"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M268.487 0H0V800H247.32C207.957 725 207.975 492.294 268.487 367.647C329 243 314.906 53.4314 268.487 0Z"
+          />
+        </svg>
+        <!-- Sidebar content -->
+        <div class="z-10 flex flex-col flex-1">
+          <div class="flex items-center justify-between flex-shrink-0 w-64 p-4">
+            <!-- Logo -->
+
+            <!-- Close btn -->
+            <button @click="isSidebarOpen = false" class="p-1 rounded-lg focus:outline-none focus:ring">
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span class="sr-only">Close sidebar</span>
+            </button>
+          </div>
+          <style>
+            .menu-nav {
+                margin-bottom: 1rem; /* Atur margin bottom menu pertama */
+            }
+        
+            .menu-nav:last-child {
+                margin-bottom: 0; /* Hapus margin bottom pada menu terakhir */
+            }
+        </style>
+        
+       <nav class="flex flex-col flex-1 w-64 p-4 mt-4 menu-nav">
+            <a href="index.html" class="flex items-center space-x-2">
+                <svg
+                    class="w-6 h-6"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                    />
+                </svg>
+                <span>Home</span>
+            </a>
+        </nav>
+        
+        <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+            <!-- Menambahkan margin-top di sini -->
+            <a href="kalku.html" class="flex items-center space-x-2">
+                <svg
+                    class="w-6 h-6"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 3C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H5ZM17 8H7M17 12H7M17 16H7M9 20V19M15 20V19"
+                    />
+                </svg>
+                <span>kalkulator</span>
+            </a>
+        </nav>
+        <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="kalender.html" class="flex items-center space-x-2">
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zm10 0v4m-6-4v4m6 10v4m-6-4v4m-2-2h4m-4 6h4m6-10h4m-4 6h4"
+        />
+    </svg>
+    <span>Calendar</span>
+        </a>
+    </nav>
+    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="solat.html" class="flex items-center space-x-2">
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 14l9-5-9-5-9 5 9 5zM5 12h13"
+        />
+    </svg>
+    <span>Waktu Solat</span>
+        </a>
+    </nav>
+    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="marketplace.html" class="flex items-center space-x-2">
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 14l9-5-9-5-9 5 9 5zM5 12h13"
+        />
+    </svg>
+    <span>Marketplace</span>
+        </a>
+    </nav>
+    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="musik.html" class="flex items-center space-x-2">
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+        />
+    </svg>
+    <span>Music</span>
+        </a>
+    </nav>
+    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="elearning.html" class="flex items-center space-x-2">
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 10V3L4 14h7v7l9-11h-7z"
+        />
+    </svg>
+    <span>Sky-Learning</span>
+        </a>
+    </nav>
+             <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="alquran.html" class="flex items-center space-x-2">
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+            <path
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d="M10 10L20 10L20 20L10 20ZM15 15L5 15L5 5L15 5Z"
+/>
+    </svg>
+    <span>Al-Quran</span>
+        </a>
+    </nav>
+            <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
+        <a href="translate.html" class="flex items-center space-x-2">
+            <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+            <path
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0-2a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm-.82-9.879a1 1 0 1 0 1.414-1.414l2.121 2.121a1 1 0 0 0 0 1.414L10.596 13.1a1 1 0 0 0-1.414-1.414l1.57-1.571-1.563-1.562zM8 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm1.879 4.82a1 1 0 0 0-1.414-1.414l-2.121 2.121a1 1 0 0 0 0 1.414l2.121 2.121a1 1 0 1 0 1.414-1.414l-1.57-1.571 1.563-1.562zM11 10a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"
+/>
+    </svg>
+    <span>translate</span>
+        </a>
+    </nav>
+          <div class="flex-shrink-0 p-4">
+            <button class="flex items-center space-x-2">
+              <svg
+                aria-hidden="true"
+                class="w-6 h-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
+              </svg>
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <main class="flex flex-col items-center justify-center flex-1">
+        <!-- Page content -->
+        <button @click="isSidebarOpen = true" class="fixed p-2 text-white bg-black rounded-lg top-5 left-5">
+          <svg
+            class="w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <span class="sr-only">Open menu</span>
+        </button>
+        <div class="bg-gray-100 p-4">
+
+            <div class="border-1 shadow-lg shadow-gray-700 rounded-lg">
+            </div>
+           <!--
+  Heads up! 👋
+
+  Plugins:
+    - @tailwindcss/forms
+-->
+
+<header class="bg-gray-50">
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <div class="text-center sm:text-left">
+          <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">Welcome Back, RISKY!</h1>
+  
+          <p class="mt-1.5 text-sm text-gray-500">Scroll ke bawah untuk melihat product</p>
+        </div>
+  
+        <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
+        </div>
+      </div>
+    </div>
+  </header>
+        </div>
+        </div>
+                <!-- top content disini adalah isi nya -->
+     <!-- Solat -->
+<!-- source: https://github.com/mfg888/Responsive-Tailwind-CSS-Grid/blob/main/index.html -->
+
+<div class="text-center p-10">
+    <h1 class="font-bold text-4xl mb-4">Sky DEV Ops Product</h1>
+    <h1 class="text-3xl">pilih di pilih murmer</h1>
+</div>
+
+<!-- ✅ Grid Section - Starts Here 👇 -->
+<section id="Projects"
+    class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+
+    <!--   ✅ Product card 1 - Starts Here 👇 -->
+   <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+        <a href="https://wa.me/+6282173242194?text=bg saya mau beli rubik nya bg">
+            <img src="product.jpg"
+                    alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+            <div class="px-4 py-3 w-72">
+                <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
+                <p class="text-lg font-bold text-black truncate block capitalize">RUBIK 3x3</p>
+                <div class="flex items-center">
+                    <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.15.000</p>
+                    <del>
+                        <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.20.000</p>
+                    </del>
+                    <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                        </svg></div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!--   🛑 Product card 1 - Ends Here  -->
+
+    <!--   ✅ Product card 2 - Starts Here 👇 -->
+    <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+        <a href="https://wa.me/+6282173242194?text=bg saya mau beli bengkoang nya bg">
+            <img src="product2.jpg"
+                    alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+            <div class="px-4 py-3 w-72">
+                <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
+                <p class="text-lg font-bold text-black truncate block capitalize">bengkoang 1 kg</p>
+                <div class="flex items-center">
+                    <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.8.000</p>
+                    <del>
+                        <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.10.000</p>
+                    </del>
+                    <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                        </svg></div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!--   🛑 Product card 2- Ends Here  -->
+
+    <!--   ✅ Product card 3 - Starts Here 👇 -->
+     <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+        <a href="https://wa.me/+6282173242194?text=bg saya mau beli nanas nya bg">
+            <img src="product3.jpg"
+                    alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+            <div class="px-4 py-3 w-72">
+                <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
+                <p class="text-lg font-bold text-black truncate block capitalize">nanas</p>
+                <div class="flex items-center">
+                    <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.8.000</p>
+                    <del>
+                        <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.10.000</p>
+                    </del>
+                    <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                        </svg></div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!--   🛑 Product card 3 - Ends Here  -->
+
+    <!--   ✅ Product card 4 - Starts Here 👇 -->
+      <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+        <a href="#">
+            <img src="product.jpg"
+                    alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+            <div class="px-4 py-3 w-72">
+                <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
+                <p class="text-lg font-bold text-black truncate block capitalize">RUBIK 3x3</p>
+                <div class="flex items-center">
+                    <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.20.000</p>
+                    <del>
+                        <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.15.000</p>
+                    </del>
+                    <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                        </svg></div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!--   🛑 Product card 4 - Ends Here  -->
+
+    <!--   ✅ Product card 5 - Starts Here 👇 -->
+    <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+        <a href="#">
+            <img src="product.jpg"
+                    alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+            <div class="px-4 py-3 w-72">
+                <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
+                <p class="text-lg font-bold text-black truncate block capitalize">RUBIK 3x3</p>
+                <div class="flex items-center">
+                    <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.20.000</p>
+                    <del>
+                        <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.15.000</p>
+                    </del>
+                    <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                        </svg></div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!--   🛑 Product card 5 - Ends Here  -->
+
+    <!--   ✅ Product card 6 - Starts Here 👇 -->
+     <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+        <a href="#">
+            <img src="product.jpg"
+                    alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+            <div class="px-4 py-3 w-72">
+                <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
+                <p class="text-lg font-bold text-black truncate block capitalize">RUBIK 3x3</p>
+                <div class="flex items-center">
+                    <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.20.000</p>
+                    <del>
+                        <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.15.000</p>
+                    </del>
+                    <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                        </svg></div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!--   🛑 Product card 6 - Ends Here  -->
+
+</section>
+
+<!-- 🛑 Grid Section - Ends Here -->
+
+
+<!-- credit -->
+<div class="text-center py-10 px-10">
+    <h2 class="font-bold text-2xl md:text-4xl mb-4">Thanks telah mampir <a href="#"
+            class="underline font-black">saudaraku</a> silahkan beli product saya</h2>
+</div>
+
+
+<!-- Support Me 🙏🥰 -->
+<script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+<script>
+    kofiWidgetOverlay.draw('mohamedghulam', {
+            'type': 'floating-chat',
+            'floating-chat.donateButton.text': 'Support me',
+            'floating-chat.donateButton.background-color': '#323842',
+            'floating-chat.donateButton.text-color': '#fff'
+        });
+</script>
+
+                    
+                <!-- end nya disini -->
+                  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.1/alpine.js"></script>
+  <script>
+      const setup = () => {
+      return {
+              isSidebarOpen: false,
+          }
+      }
+  </script>
+    
+</body>
+</html>
