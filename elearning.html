@@ -527,6 +527,22 @@ print("Tiga nilai terakhir:", last_three)
 
                 </code></pre>
             </div>
+            <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(8)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(8)">Like</button>
+                    <span class="like-count like-count-8">0 Like</span>
+                </div>
+                <pre><code id="code8" class="language-python">
+# ini adalah soal nomor 1                    
+def jumlah(n):
+    return n * (n + 1) // 2
+print(jumlah(10)) 
+
+                </code></pre>
+            </div>
+        </div>
+    </div>
         </div>
     </div>
     <!-- Add Prism.js CDN for syntax highlighting -->
@@ -573,7 +589,7 @@ print("Tiga nilai terakhir:", last_three)
             likeCountElement.textContent = count + ' Like';
         }
         // Initial update of like count
-        for (var i = 1; i <= 7; i++) {
+        for (var i = 1; i <= 8; i++) {
             updateLikeCount(localStorage.getItem('likeCount' + i) || 0, i);
         }
         
