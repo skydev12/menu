@@ -527,6 +527,18 @@ print("Tiga nilai terakhir:", last_three)
 
                 </code></pre>
             </div>
+             <div class="bg-white shadow-md rounded p-4">
+                <img src="10alpro.png" class="w-auto h-auto" alt="Image Description">
+                <div class="text-sm text-gray-500 mb-4">
+                    <p>Ini adalah cuplikan tugas algoritma pemrograman pertemuan 10. Silahkan di-download file-nya pada tombol di bawah ini:</p>
+                    <!-- Add programming language column here -->
+                    <div class="mt-4">
+                        <h2 class="text-lg font-semibold">Programming Language:</h2>
+                        <p>Python</p>
+                    </div>
+                </div>
+                <a href="https://www.mediafire.com/file/8547bmey7a3hq8x/risky_darlis_alpro_10.pdf/file" download="file-name" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded text-lg">Download</a>
+            </div>
             <div class="code-container code-container-2">
                 <button class="copy-button" onclick="copyCode(8)">Salin</button>
                 <div>
@@ -535,12 +547,146 @@ print("Tiga nilai terakhir:", last_three)
                 </div>
                 <pre><code id="code8" class="language-python">
 # ini adalah soal nomor 1                    
+def nilai_max3(a, b, c):
+    return max(a, b, c)
+hasil = nilai_max3(3, 5, 7)
+print(hasil) 
+                </code></pre>
+            </div>
+             <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(9)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(9)">Like</button>
+                    <span class="like-count like-count-9">0 Like</span>
+                </div>
+                <pre><code id="code9" class="language-python">
+# ini adalah soal nomor 2                    
+def hitung_karakter(kata):
+
+    return len(kata)
+
+kata = "risky"
+jumlah_karakter = hitung_karakter(kata)
+print("Masukkan Kata :", kata)
+print("Jumlah Karakter =", jumlah_karakter)
+
+                </code></pre>
+            </div>
+              <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(10)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(10)">Like</button>
+                    <span class="like-count like-count-10">0 Like</span>
+                </div>
+                <pre><code id="code10" class="language-python">
+# ini adalah soal nomor 3                   
 def jumlah(n):
     return n * (n + 1) // 2
 print(jumlah(10)) 
 
                 </code></pre>
-            </div>
+        </div>
+             <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(11)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(11)">Like</button>
+                    <span class="like-count like-count-11">0 Like</span>
+                </div>
+                <pre><code id="code11" class="language-python">
+# ini adalah soal nomor 4             
+def kubus(x):
+    v = x * x * x
+    return v
+
+# Misalkan y adalah variabel dengan nilai tertentu
+y = 5
+# Menghitung kubus dari y menggunakan fungsi kubus
+hasil = kubus(y)
+# Mencetak nilai y^3
+print(f"Nilai {y}^3 adalah {hasil}")
+
+
+v = 4
+hasil = kubus(3)
+print(v, hasil)
+
+
+                </code></pre>
+        </div>
+             <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(12)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(12)">Like</button>
+                    <span class="like-count like-count-12">0 Like</span>
+                </div>
+                <pre><code id="code12" class="language-python">
+# ini adalah soal nomor 5          
+import math
+
+def luas_persegi_panjang(panjang, lebar):
+    return panjang * lebar
+
+def luas_persegi(sisi):
+    return sisi * sisi
+
+def luas_segitiga(alas, tinggi):
+    return 0.5 * alas * tinggi
+
+def luas_lingkaran(jari_jari):
+    return math.pi * jari_jari * jari_jari
+
+def menu():
+    print("============================================")
+    print(" Menghitung Luas Bangun Datar ")
+    print("============================================")
+    print("1. Luas Persegi Panjang")
+    print("2. Luas Persegi")
+    print("3. Luas Segitiga")
+    print("4. Luas Lingkaran")
+    print("9. Exit")
+    print("============================================")
+
+def main():
+    while True:
+        menu()
+        pilihan = int(input("Pilih Menu Menghitung Luas : "))
+        
+        if pilihan == 1:
+            print("------ Menghitung Luas Persegi Panjang ------")
+            panjang = float(input("Masukkan Panjang : "))
+            lebar = float(input("Masukkan Lebar : "))
+            luas = luas_persegi_panjang(panjang, lebar)
+            print(f"Luas Persegi Panjang = {luas}")
+        
+        elif pilihan == 2:
+            print("------ Menghitung Luas Persegi ------")
+            sisi = float(input("Masukkan Nilai Sisi : "))
+            luas = luas_persegi(sisi)
+            print(f"Luas Persegi = {luas}")
+        
+        elif pilihan == 3:
+            print("------ Menghitung Luas Segitiga ------")
+            alas = float(input("Masukkan Alas : "))
+            tinggi = float(input("Masukkan Tinggi : "))
+            luas = luas_segitiga(alas, tinggi)
+            print(f"Luas Segitiga = {luas}")
+        
+        elif pilihan == 4:
+            print("------ Menghitung Luas Lingkaran ------")
+            jari_jari = float(input("Masukkan Jari-jari : "))
+            luas = luas_lingkaran(jari_jari)
+            print(f"Luas Lingkaran = {luas}")
+        
+        elif pilihan == 9:
+            print("Terima kasih telah menggunakan program ini.")
+            break
+        
+        else:
+            print("Pilihan tidak valid, silakan coba lagi.")
+
+if __name__ == "__main__":
+    main()
+                </code></pre>
         </div>
     </div>
         </div>
@@ -589,7 +735,7 @@ print(jumlah(10))
             likeCountElement.textContent = count + ' Like';
         }
         // Initial update of like count
-        for (var i = 1; i <= 8; i++) {
+        for (var i = 1; i <= 12; i++) {
             updateLikeCount(localStorage.getItem('likeCount' + i) || 0, i);
         }
         
