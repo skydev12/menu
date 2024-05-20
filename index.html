@@ -18,24 +18,9 @@
     animation: neon 1.5s infinite alternate;
 }
 
-/* Text Animation */
-@keyframes text-move {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-10px); }
-}
 
 .neon-text {
     animation: text-move 1s ease-in-out infinite alternate;
-}
-
-/* Line Animation */
-@keyframes line-move {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(10px); }
-}
-
-.line-animation {
-    animation: line-move 1s ease-in-out infinite alternate;
 }
 
          /* Style Card yang keren  untuk my contact*/
@@ -56,6 +41,12 @@
     /* disini end my contact */
 
         /* ini untuk style menu */
+        .card-container1 {
+    background-color: #333; /* Warna hijau pekat */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
         .icon-button {
         background: none;
         border: none;
@@ -125,7 +116,7 @@
 <body class="bg-gray-100">
 
    <!-- Profile Section -->
-<div class="flex flex-col sm:flex-row items-center bg-blue-500 p-5 rounded-t-lg">
+<div class="flex flex-col sm:flex-row items-center bg-very-dark-gray-500 p-5 rounded-t-lg">
     <div class="h-40 w-40 overflow-hidden rounded-full neon-animation">
         <img src="profil.jpg" alt="Profile Picture" class="object-cover h-full w-full"/>
         <div class="line-animation">
@@ -133,48 +124,49 @@
 </div>
 <div class="line-animation">
     <div class="text-center sm:text-left sm:ml-5 mt-5 sm:mt-0">
-        <p class="font-poppins font-bold text-white text-2xl sm:text-4xl neon-text">RISKY DARLIS</p>
-        <p class="text-white">Software Engineer</p>
+        <p class="font-poppins font-bold text-dark text-2xl sm:text-4xl neon-text">RISKY DARLIS</p>
+        <p class="text-dark">Software Engineer</p>
     </div>
 </div>
 </div>
 
 
     <!-- Navigation Buttons -->
-    <div class="flex justify-center flex-wrap mt-5">
-        <a href="index.html" class="icon-button neon">
-            <i class="fas fa-home"></i>
-        </a>
-        <a href="kalku.html" class="icon-button neon">
-            <i class="fas fa-calculator"></i>
-        </a>
-        <a href="kalender.html" class="icon-button neon">
-            <i class="far fa-calendar-alt"></i>
-        </a>
-        <a href="solat.html" class="icon-button neon">
-            <i class="fas fa-praying-hands"></i>
-        </a>
-        <a href="marketplace.html" class="icon-button neon">
-            <i class="fas fa-shopping-cart"></i>
-        </a>
-        <a href="musik.html" class="icon-button neon">
-            <i class="fas fa-music"></i>
-        </a>
-        <a href="elearning.html" class="icon-button neon">
-            <i class="fas fa-book"></i>
-        </a>
-        <a href="alquran.html" class="icon-button neon">
-            <i class="fas fa-quran"></i>
-        </a>
-        <a href="translate.html" class="icon-button neon">
-            <i class="fas fa-language"></i>
-        </a>
-    </div>  
-    
+    <div class="card-container1">
+        <div class="flex justify-center flex-wrap mt-5">
+            <a href="index.html" class="icon-button neon">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="kalku.html" class="icon-button neon">
+                <i class="fas fa-calculator"></i>
+            </a>
+            <a href="kalender.html" class="icon-button neon">
+                <i class="far fa-calendar-alt"></i>
+            </a>
+            <a href="solat.html" class="icon-button neon">
+                <i class="fas fa-praying-hands"></i>
+            </a>
+            <a href="marketplace.html" class="icon-button neon">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <a href="musik.html" class="icon-button neon">
+                <i class="fas fa-music"></i>
+            </a>
+            <a href="elearning.html" class="icon-button neon">
+                <i class="fas fa-book"></i>
+            </a>
+            <a href="alquran.html" class="icon-button neon">
+                <i class="fas fa-quran"></i>
+            </a>
+            <a href="translate.html" class="icon-button neon">
+                <i class="fas fa-language"></i>
+            </a>
+        </div>
+    </div>
     
 
     <!-- Main Content -->
-    <div class="p-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div class="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Contact Section -->
         <div class="flex flex-col bg-gray-800 rounded-lg shadow-lg p-6">
             <h2 class="text-lg font-poppins font-bold text-blue-500">My Contact</h2>
@@ -203,6 +195,84 @@
                         <i class="fab fa-twitter"></i>
                     </a>
                     <div class="ml-2 neon">risky</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Card -->
+        <div class="flex flex-col bg-gray-800 rounded-lg shadow-lg p-6">
+            <h2 class="text-lg font-poppins font-bold text-blue-500">My Projects</h2>
+            <div class="border-2 w-20 border-blue-500 my-3"></div>
+            <div>
+                <div class="flex items-center my-1">
+                    <a class="w-6 text-gray-700 hover:text-orange-600 neon" href="https://github.com/riskydarlis" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <div class="ml-2 neon">GitHub</div>
+                </div>
+                <div class="flex items-center my-1">
+                    <a class="w-6 text-gray-700 hover:text-orange-600 neon" href="https://bitbucket.org/riskydarlis" target="_blank">
+                        <i class="fab fa-bitbucket"></i>
+                    </a>
+                    <div class="ml-2 neon">Bitbucket</div>
+                </div>
+                <div class="flex items-center my-1">
+                    <a class="w-6 text-gray-700 hover:text-orange-600 neon" href="https://gitlab.com/riskydarlis" target="_blank">
+                        <i class="fab fa-gitlab"></i>
+                    </a>
+                    <div class="ml-2 neon">GitLab</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Card -->
+        <div class="flex flex-col bg-gray-800 rounded-lg shadow-lg p-6">
+            <h2 class="text-lg font-poppins font-bold text-blue-500">My Hobbies</h2>
+            <div class="border-2 w-20 border-blue-500 my-3"></div>
+            <div>
+                <div class="flex items-center my-1">
+                    <a class="w-6 text-gray-700 hover:text-orange-600 neon" href="https://goodreads.com/riskydarlis" target="_blank">
+                        <i class="fas fa-book"></i>
+                    </a>
+                    <div class="ml-2 neon">Reading</div>
+                </div>
+                <div class="flex items-center my-1">
+                    <a class="w-6 text-gray-700 hover:text-orange-600 neon" href="https://strava.com/athletes/riskydarlis" target="_blank">
+                        <i class="fas fa-bicycle"></i>
+                    </a>
+                    <div class="ml-2 neon">Cycling</div>
+                </div>
+                <div class="flex items-center my-1">
+                    <a class="w-6 text-gray-700 hover:text-orange-600 neon" href="https://youtube.com/riskydarlis" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <div class="ml-2 neon">Creating Videos</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fourth Card -->
+        <div class="flex flex-col bg-gray-800 rounded-lg shadow-lg p-6">
+            <h2 class="text-lg font-poppins font-bold text-blue-500">My Skills</h2>
+            <div class="border-2 w-20 border-blue-500 my-3"></div>
+            <div>
+                <div class="flex items-center my-1">
+                    <span class="w-6 text-gray-700 hover:text-orange-600 neon">
+                        <i class="fas fa-code"></i>
+                    </span>
+                    <div class="ml-2 neon">Programming</div>
+                </div>
+                <div class="flex items-center my-1">
+                    <span class="w-6 text-gray-700 hover:text-orange-600 neon">
+                        <i class="fas fa-database"></i>
+                    </span>
+                    <div class="ml-2 neon">Database Management</div>
+                </div>
+                <div class="flex items-center my-1">
+                    <span class="w-6 text-gray-700 hover:text-orange-600 neon">
+                        <i class="fas fa-paint-brush"></i>
+                    </span>
+                    <div class="ml-2 neon">Graphic Design</div>
                 </div>
             </div>
         </div>
