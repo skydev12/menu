@@ -5,7 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>elearning sky</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* ini untuk style menu */
+        .card-container1 {
+    background-color: #333; /* Warna hijau pekat */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+        .icon-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 3.2rem;
+        margin: 10px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .icon-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Gaya Neon */
+    .neon {
+        color: #d8cdf1; /* Warna teks putih */
+        text-shadow: 0 0 5px #00fff9, 0 0 10px #329e9c, 0 0 15px #00fff9, 0 0 20px #00fff9; /* Bayangan teks berwarna neon */
+    }
+/* ini end style menu */
         .neon-title {
             font-size: 1.5rem;
             color: #fff;
@@ -76,7 +108,40 @@
         }
     </style>
 </head>
+<!-- Navigation Buttons -->
 <body class="bg-gray-900 flex flex-col items-center justify-center min-h-screen">
+    <!-- Navigation Buttons -->
+    <div class="card-container1">
+        <div class="flex justify-center flex-wrap mt-5">
+            <a href="index.html" class="icon-button neon">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="kalku.html" class="icon-button neon">
+                <i class="fas fa-calculator"></i>
+            </a>
+            <a href="kalender.html" class="icon-button neon">
+                <i class="far fa-calendar-alt"></i>
+            </a>
+            <a href="solat.html" class="icon-button neon">
+                <i class="fas fa-praying-hands"></i>
+            </a>
+            <a href="marketplace.html" class="icon-button neon">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <a href="musik.html" class="icon-button neon">
+                <i class="fas fa-music"></i>
+            </a>
+            <a href="elearning.html" class="icon-button neon">
+                <i class="fas fa-book"></i>
+            </a>
+            <a href="alquran.html" class="icon-button neon">
+                <i class="fas fa-quran"></i>
+            </a>
+            <a href="translate.html" class="icon-button neon">
+                <i class="fas fa-language"></i>
+            </a>
+        </div>
+    </div>
 
     <h1 class="neon-text mb-8">SKY ELEARNING BY RISKY</h1>
 
@@ -112,6 +177,11 @@
             </div>
         </a>
     </div>
-
+    <script>
+        // Fungsi untuk kembali ke halaman sebelumnya
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>
