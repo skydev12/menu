@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <!-- Add Prism.js CDN for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Customize your styles here */
+        /* Example: */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .code-container {
+            background-color: #000;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            position: relative; /* Add position relative for button placement */
+            margin-top: 20px; /* Adjust margin top to match the card above */
+        }
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        /* Add styles for like and comment buttons */
+        .like-button {
+            background-color: #3182ce;
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        /* Add styles for like count */
+        .like-count {
+            color: #718096;
+            font-size: 14px;
+            margin-right: 20px;
+        }
+        /* ini untuk style menu */
+        .card-container1 {
+    background-color: #333; /* Warna hijau pekat */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+        .icon-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 3.2rem;
+        margin: 10px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .icon-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Gaya Neon */
+    .neon {
+        color: #d8cdf1; /* Warna teks putih */
+        text-shadow: 0 0 5px #00fff9, 0 0 10px #329e9c, 0 0 15px #00fff9, 0 0 20px #00fff9; /* Bayangan teks berwarna neon */
+    }
+/* ini end style menu */
+    </style>
+</head>
+<body>
+    <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');">
+    <div class="flex h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
+      <!-- Loading screen -->
+      <div
+        x-ref="loading"
+        class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-blue-600"
+      >
+        Loading.....
+      </div>
+
+      <!-- Sidebar -->
+     <!-- Navigation Buttons -->
+    <div class="card-container1">
+        <div class="flex justify-center flex-wrap mt-5">
+            <a href="index.html" class="icon-button neon">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="kalku.html" class="icon-button neon">
+                <i class="fas fa-calculator"></i>
+            </a>
+            <a href="kalender.html" class="icon-button neon">
+                <i class="far fa-calendar-alt"></i>
+            </a>
+            <a href="solat.html" class="icon-button neon">
+                <i class="fas fa-praying-hands"></i>
+            </a>
+            <a href="marketplace.html" class="icon-button neon">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <a href="musik.html" class="icon-button neon">
+                <i class="fas fa-music"></i>
+            </a>
+            <a href="elearning.html" class="icon-button neon">
+                <i class="fas fa-book"></i>
+            </a>
+            <a href="alquran.html" class="icon-button neon">
+                <i class="fas fa-quran"></i>
+            </a>
+            <a href="translate.html" class="icon-button neon">
+                <i class="fas fa-language"></i>
+            </a>
+            <div class="bg-white shadow-md rounded p-4">
+                <img src="10alpro.png" class="w-auto h-auto" alt="Image Description">
+                <div class="text-sm text-gray-500 mb-4">
+                    <p>Ini adalah cuplikan tugas algoritma pemrograman pertemuan 10. Silahkan di-download file-nya pada tombol di bawah ini:</p>
+                    <!-- Add programming language column here -->
+                    <div class="mt-4">
+                        <h2 class="text-lg font-semibold">Programming Language:</h2>
+                        <p>Python</p>
+                    </div>
+                </div>
+                <a href="https://www.mediafire.com/file/8547bmey7a3hq8x/risky_darlis_alpro_10.pdf/file" download="file-name" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded text-lg">Download</a>
+            </div>
+            <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(1)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(1)">Like</button>
+                    <span class="like-count like-count-1">0 Like</span>
+                </div>
+                <pre><code id="code1" class="language-python">
+            # ini adalah soal nomor 1                    
+            def nilai_max3(a, b, c):
+            return max(a, b, c)
+            hasil = nilai_max3(3, 5, 7)
+            print(hasil) 
+                </code></pre>
+            </div>
+             <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(2)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(2)">Like</button>
+                    <span class="like-count like-count-2">0 Like</span>
+                </div>
+                <pre><code id="code2" class="language-python">
+            # ini adalah soal nomor 2                    
+            def hitung_karakter(kata):
+            
+            return len(kata)
+            
+            kata = "risky"
+            jumlah_karakter = hitung_karakter(kata)
+            print("Masukkan Kata :", kata)
+            print("Jumlah Karakter =", jumlah_karakter)
+            
+                </code></pre>
+            </div>
+              <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(3)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(3)">Like</button>
+                    <span class="like-count like-count-3">0 Like</span>
+                </div>
+                <pre><code id="code3" class="language-python">
+            # ini adalah soal nomor 3                   
+            def jumlah(n):
+            return n * (n + 1) // 2
+            print(jumlah(10)) 
+            
+                </code></pre>
+            </div>
+             <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(4)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(4)">Like</button>
+                    <span class="like-count like-count-4">0 Like</span>
+                </div>
+                <pre><code id="code4" class="language-python">
+            # ini adalah soal nomor 4             
+            def kubus(x):
+            v = x * x * x
+            return v
+            
+            # Misalkan y adalah variabel dengan nilai tertentu
+            y = 5
+            # Menghitung kubus dari y menggunakan fungsi kubus
+            hasil = kubus(y)
+            # Mencetak nilai y^3
+            print(f"Nilai {y}^3 adalah {hasil}")
+            
+            
+            v = 4
+            hasil = kubus(3)
+            print(v, hasil)
+            
+            
+                </code></pre>
+            </div>
+             <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(5)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(5)">Like</button>
+                    <span class="like-count like-count-5">0 Like</span>
+                </div>
+                <pre><code id="code5" class="language-python">
+            # ini adalah soal nomor 5          
+            import math
+            
+            def luas_persegi_panjang(panjang, lebar):
+            return panjang * lebar
+            
+            def luas_persegi(sisi):
+            return sisi * sisi
+            
+            def luas_segitiga(alas, tinggi):
+            return 0.5 * alas * tinggi
+            
+            def luas_lingkaran(jari_jari):
+            return math.pi * jari_jari * jari_jari
+            
+            def menu():
+            print("============================================")
+            print(" Menghitung Luas Bangun Datar ")
+            print("============================================")
+            print("1. Luas Persegi Panjang")
+            print("2. Luas Persegi")
+            print("3. Luas Segitiga")
+            print("4. Luas Lingkaran")
+            print("9. Exit")
+            print("============================================")
+            
+            def main():
+            while True:
+            menu()
+            pilihan = int(input("Pilih Menu Menghitung Luas : "))
+            
+            if pilihan == 1:
+            print("------ Menghitung Luas Persegi Panjang ------")
+            panjang = float(input("Masukkan Panjang : "))
+            lebar = float(input("Masukkan Lebar : "))
+            luas = luas_persegi_panjang(panjang, lebar)
+            print(f"Luas Persegi Panjang = {luas}")
+            
+            elif pilihan == 2:
+            print("------ Menghitung Luas Persegi ------")
+            sisi = float(input("Masukkan Nilai Sisi : "))
+            luas = luas_persegi(sisi)
+            print(f"Luas Persegi = {luas}")
+            
+            elif pilihan == 3:
+            print("------ Menghitung Luas Segitiga ------")
+            alas = float(input("Masukkan Alas : "))
+            tinggi = float(input("Masukkan Tinggi : "))
+            luas = luas_segitiga(alas, tinggi)
+            print(f"Luas Segitiga = {luas}")
+            
+            elif pilihan == 4:
+            print("------ Menghitung Luas Lingkaran ------")
+            jari_jari = float(input("Masukkan Jari-jari : "))
+            luas = luas_lingkaran(jari_jari)
+            print(f"Luas Lingkaran = {luas}")
+            
+            elif pilihan == 9:
+            print("Terima kasih telah menggunakan program ini.")
+            break
+            
+            else:
+            print("Pilihan tidak valid, silakan coba lagi.")
+            
+            if __name__ == "__main__":
+            main()
+                </code></pre>
+            </div>
+    </div>
+        </div>
+    </div>
+    <!-- Add Prism.js CDN for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-python.min.js"></script>
+    <script>
+        function copyCode(num) {
+            /* Get the text content of the code element */
+            var codeElement = document.getElementById('code' + num);
+            var codeText = codeElement.innerText;
+
+            /* Create a textarea element to hold the code text */
+            var textarea = document.createElement('textarea');
+            textarea.value = codeText;
+
+            /* Append the textarea to the document */
+            document.body.appendChild(textarea);
+
+            /* Select and copy the text from the textarea */
+            textarea.select();
+            document.execCommand('copy');
+
+            /* Remove the textarea from the document */
+            document.body.removeChild(textarea);
+
+            /* Change button text to indicate success */
+            var copyButton = document.querySelector('.copy-button');
+            copyButton.textContent = 'Tersalin!';
+            setTimeout(function() {
+                copyButton.textContent = 'Salin';
+            }, 2000); /* Change back to "Copy" after 2 seconds */
+        }
+        
+        // Function to handle like button click
+        function like(num) {
+            var likeCount = localStorage.getItem('likeCount' + num);
+            likeCount = likeCount ? parseInt(likeCount) + 1 : 1;
+            localStorage.setItem('likeCount' + num, likeCount);
+            updateLikeCount(likeCount, num);
+        }
+        // Function to update like count
+        function updateLikeCount(count, num) {
+            var likeCountElement = document.querySelector('.like-count-' + num);
+            likeCountElement.textContent = count + ' Like';
+        }
+        // Initial update of like count
+        for (var i = 1; i <= 7; i++) {
+            updateLikeCount(localStorage.getItem('likeCount' + i) || 0, i);
+        }
+        
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.1/alpine.js"></script>
+  <script>
+      const setup = () => {
+      return {
+              isSidebarOpen: false,
+          }
+      }
+  </script>
+    <script>
+        // Fungsi untuk kembali ke halaman sebelumnya
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
