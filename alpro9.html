@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <!-- Add Prism.js CDN for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Customize your styles here */
+        /* Example: */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .code-container {
+            background-color: #000;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            position: relative; /* Add position relative for button placement */
+            margin-top: 20px; /* Adjust margin top to match the card above */
+        }
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        /* Add styles for like and comment buttons */
+        .like-button {
+            background-color: #3182ce;
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        /* Add styles for like count */
+        .like-count {
+            color: #718096;
+            font-size: 14px;
+            margin-right: 20px;
+        }
+        /* ini untuk style menu */
+        .card-container1 {
+    background-color: #333; /* Warna hijau pekat */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+        .icon-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 3.2rem;
+        margin: 10px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .icon-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Gaya Neon */
+    .neon {
+        color: #d8cdf1; /* Warna teks putih */
+        text-shadow: 0 0 5px #00fff9, 0 0 10px #329e9c, 0 0 15px #00fff9, 0 0 20px #00fff9; /* Bayangan teks berwarna neon */
+    }
+/* ini end style menu */
+    </style>
+</head>
+<body>
+    <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');">
+    <div class="flex h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
+      <!-- Loading screen -->
+      <div
+        x-ref="loading"
+        class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-blue-600"
+      >
+        Loading.....
+      </div>
+
+      <!-- Sidebar -->
+     <!-- Navigation Buttons -->
+    <div class="card-container1">
+        <div class="flex justify-center flex-wrap mt-5">
+            <a href="index.html" class="icon-button neon">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="kalku.html" class="icon-button neon">
+                <i class="fas fa-calculator"></i>
+            </a>
+            <a href="kalender.html" class="icon-button neon">
+                <i class="far fa-calendar-alt"></i>
+            </a>
+            <a href="solat.html" class="icon-button neon">
+                <i class="fas fa-praying-hands"></i>
+            </a>
+            <a href="marketplace.html" class="icon-button neon">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <a href="musik.html" class="icon-button neon">
+                <i class="fas fa-music"></i>
+            </a>
+            <a href="elearning.html" class="icon-button neon">
+                <i class="fas fa-book"></i>
+            </a>
+            <a href="alquran.html" class="icon-button neon">
+                <i class="fas fa-quran"></i>
+            </a>
+            <a href="translate.html" class="icon-button neon">
+                <i class="fas fa-language"></i>
+            </a>
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">Elearning RISKY</h1>
+        <div class="grid grid-cols-1 gap-4">
+            <!-- Add your image here -->
+            <div class="bg-white shadow-md rounded p-4">
+                <img src="image4.jpg" class="w-auto h-auto" alt="Image Description">
+                <div class="text-sm text-gray-500 mb-4">
+                    <p>Ini adalah cuplikan tugas algoritma pemrograman pertemuan 9. Silahkan di-download file-nya pada tombol di bawah ini:</p>
+                    <!-- Add programming language column here -->
+                    <div class="mt-4">
+                        <h2 class="text-lg font-semibold">Programming Language:</h2>
+                        <p>Python</p>
+                    </div>
+                </div>
+                <a href="https://www.mediafire.com/file/1pa2of7gjhyc1rb/risky+darlis+alpro+9.pdf/file" download="file-name" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded text-lg">Download</a>
+            </div>
+            <!-- Add code container here -->
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode(1)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(1)">Like</button>
+                    <span class="like-count like-count-1">0 Like</span>
+                </div>
+                <pre><code id="code1" class="language-python">
+#ini untuk syntax nomor (2) 
+a = [1,2,3]
+b = a[:]
+b[0] = 5
+print("Sebelum baris ketiga: a =", a, ", b =", b)
+b[0] = 5
+print("Sesudah baris ketiga: a =", a, ", b =", b)
+                </code></pre>
+            </div>
+            <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(2)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(2)">Like</button>
+                    <span class="like-count like-count-2">0 Like</span>
+                </div>
+                <pre><code id="code2" class="language-python">
+            #ini untuk output nomor (2) 
+            Sebelum baris ketiga: a = [1,2,3], b = [1,2,3]
+            Sesudah baris ketiga: a = [1,2,3], b = [5,2,3]
+                </code></pre>
+            </div>
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode(3)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(3)">Like</button>
+                    <span class="like-count like-count-3">0 Like</span>
+                </div>
+                <pre><code id="code3" class="language-python">
+#ini untuk syntax nomor (3) 
+# Inisialisasi variabel
+ini = ["Saya","mahasiswa","UNP"]
+itu = ["Saya","mahasiswa","UNP"]
+                    
+# Coba 1: Bandingkan referensi
+print("Coba 1: {0}".format(ini is itu))
+
+# Ubah referensi
+ini = itu
+
+# Coba 2: Bandingkan referensi
+print("Coba 2: {0}".format(ini is itu))
+                </code></pre>
+            </div>
+            <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(4)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(4)">Like</button>
+                    <span class="like-count like-count-4">0 Like</span>
+                </div>
+                <pre><code id="code4" class="language-python">
+            #ini untuk output nomor (3) 
+          Coba 1: False
+          Coba 2: True
+                </code></pre>
+            </div>
+            <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(5)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(5)">Like</button>
+                    <span class="like-count like-count-5">0 Like</span>
+                </div>
+                <pre><code id="code5" class="language-python">
+ini jawaban soal no 4                    
+# a. Menentukan jumlah total
+X = [2, 4, -9, 4]
+total = sum(X)
+print("Jumlah total:", total)
+
+# b. Menentukan nilai elemen list yang besar dari nol
+X = [2, 4, -9, 4]
+positif = [x for x in X if x > 0]
+print("Nilai elemen list yang besar dari nol:", positif)
+
+# c. Menentukan nilai terbesar
+X = [2, 4, -9, 4]
+max_value = max(X)
+print("Nilai terbesar:", max_value)
+
+# d. Menentukan nilai terkecil
+X = [2, 4, -9, 4]
+min_value = min(X)
+print("Nilai terkecil:", min_value)
+
+# e. Menentukan dan menghapus nilai duplikat
+X = [2, 4, -9, 4]
+X = list(set(X))
+print("Nilai duplikat dihapus:", X)
+
+# f. Mengurutkan nilai
+X = [-9, 2, 4, 4]
+X.sort()
+print("Nilai yang diurutkan:", X)
+
+                </code></pre>
+            </div>
+            <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(6)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(6)">Like</button>
+                    <span class="like-count like-count-6">0 Like</span>
+                </div>
+                <pre><code id="code6" class="language-python">
+ini jawaban soal untuk no 5                    
+# Definisikan list
+list_string = ["mangga", "a", "aba", "1221"]
+
+# Buat fungsi untuk menghitung jumlah string yang panjangnya dua atau lebih dan memiliki karakter/huruf pertama dan terakhir yang sama
+def count_strings(list_string):
+    count = 0
+    for string in list_string:
+        if len(string) > 1 and string[0] == string[-1]:
+            count += 1
+    return count
+
+# Panggil fungsi dan cetak hasil
+print("Jumlah string yang panjangnya dua atau lebih dan memiliki karakter/huruf pertama dan terakhir yang sama:", count_strings(list_string))
+
+                </code></pre>
+            </div>
+            <div class="code-container code-container-2">
+                <button class="copy-button" onclick="copyCode(7)">Salin</button>
+                <div>
+                    <button class="like-button" onclick="like(7)">Like</button>
+                    <span class="like-count like-count-7">0 Like</span>
+                </div>
+                <pre><code id="code7" class="language-python">
+ini jawaban soal untuk no 6                  
+# Definisikan list
+list_x = [i**2 for i in range(1, 11)]
+
+# Buat fungsi untuk menghasilkan tiga nilai pertama dan tiga nilai terakhir
+def get_first_last(list_x):
+    first_three = list_x[:3]
+    last_three = list_x[-3:]
+    return first_three, last_three
+
+# Panggil fungsi dan cetak hasil
+first_three, last_three = get_first_last(list_x)
+print("Tiga nilai pertama:", first_three)
+print("Tiga nilai terakhir:", last_three)
+
+                </code></pre>
+            </div>
+    </div>
+        </div>
+    </div>
+    <!-- Add Prism.js CDN for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-python.min.js"></script>
+    <script>
+        function copyCode(num) {
+            /* Get the text content of the code element */
+            var codeElement = document.getElementById('code' + num);
+            var codeText = codeElement.innerText;
+
+            /* Create a textarea element to hold the code text */
+            var textarea = document.createElement('textarea');
+            textarea.value = codeText;
+
+            /* Append the textarea to the document */
+            document.body.appendChild(textarea);
+
+            /* Select and copy the text from the textarea */
+            textarea.select();
+            document.execCommand('copy');
+
+            /* Remove the textarea from the document */
+            document.body.removeChild(textarea);
+
+            /* Change button text to indicate success */
+            var copyButton = document.querySelector('.copy-button');
+            copyButton.textContent = 'Tersalin!';
+            setTimeout(function() {
+                copyButton.textContent = 'Salin';
+            }, 2000); /* Change back to "Copy" after 2 seconds */
+        }
+        
+        // Function to handle like button click
+        function like(num) {
+            var likeCount = localStorage.getItem('likeCount' + num);
+            likeCount = likeCount ? parseInt(likeCount) + 1 : 1;
+            localStorage.setItem('likeCount' + num, likeCount);
+            updateLikeCount(likeCount, num);
+        }
+        // Function to update like count
+        function updateLikeCount(count, num) {
+            var likeCountElement = document.querySelector('.like-count-' + num);
+            likeCountElement.textContent = count + ' Like';
+        }
+        // Initial update of like count
+        for (var i = 1; i <= 7; i++) {
+            updateLikeCount(localStorage.getItem('likeCount' + i) || 0, i);
+        }
+        
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.1/alpine.js"></script>
+  <script>
+      const setup = () => {
+      return {
+              isSidebarOpen: false,
+          }
+      }
+  </script>
+    <script>
+        // Fungsi untuk kembali ke halaman sebelumnya
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
