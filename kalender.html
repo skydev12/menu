@@ -1,452 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Document</title>
 </head>
+
 <body>
-    <!-- component -->
-<div x-data="setup()" x-init="$refs.loading.classList.add('hidden');">
-    <div class="flex h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
-      <!-- Loading screen -->
-      <div
-        x-ref="loading"
-        class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-blue-600"
-      >
-        Loading abgkuu mohon bersabar.....
-      </div>
-
-      <!-- Sidebar -->
-      <div
-        x-transition:enter="transform transition-transform duration-300"
-        x-transition:enter-start="-translate-x-full"
-        x-transition:enter-end="translate-x-0"
-        x-transition:leave="transform transition-transform duration-300"
-        x-transition:leave-start="translate-x-0"
-        x-transition:leave-end="-translate-x-full"
-        x-show="isSidebarOpen"
-        class="fixed inset-y-0 z-10 flex w-80"
-      >
-        <!-- Curvy shape -->
-        <svg
-          class="absolute inset-0 w-full h-full text-white"
-          style="filter: drop-shadow(10px 0 10px #00000030)"
-          preserveAspectRatio="none"
-          viewBox="0 0 309 800"
-          fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M268.487 0H0V800H247.32C207.957 725 207.975 492.294 268.487 367.647C329 243 314.906 53.4314 268.487 0Z"
-          />
-        </svg>
-        <!-- Sidebar content -->
-        <div class="z-10 flex flex-col flex-1">
-          <div class="flex items-center justify-between flex-shrink-0 w-64 p-4">
-            <!-- Logo -->
-
-            <!-- Close btn -->
-            <button @click="isSidebarOpen = false" class="p-1 rounded-lg focus:outline-none focus:ring">
-              <svg
-                class="w-6 h-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              <span class="sr-only">Close sidebar</span>
-            </button>
-          </div>
-          <style>
-            .menu-nav {
-                margin-bottom: 1rem; /* Atur margin bottom menu pertama */
-            }
-        
-            .menu-nav:last-child {
-                margin-bottom: 0; /* Hapus margin bottom pada menu terakhir */
-            }
-        </style>
-        
-      <nav class="flex flex-col flex-1 w-64 p-4 mt-4 menu-nav">
-            <a href="index.html" class="flex items-center space-x-2">
-                <svg
-                    class="w-6 h-6"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    />
-                </svg>
-                <span>Home</span>
-            </a>
-        </nav>
-        
-        <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
-            <!-- Menambahkan margin-top di sini -->
-            <a href="kalku.html" class="flex items-center space-x-2">
-                <svg
-                    class="w-6 h-6"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 3C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H5ZM17 8H7M17 12H7M17 16H7M9 20V19M15 20V19"
-                    />
-                </svg>
-                <span>kalkulator</span>
-            </a>
-        </nav>
-        <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
-        <a href="kalender.html" class="flex items-center space-x-2">
-            <svg
-                class="w-6 h-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-            <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zm10 0v4m-6-4v4m6 10v4m-6-4v4m-2-2h4m-4 6h4m6-10h4m-4 6h4"
-        />
-    </svg>
-    <span>Calendar</span>
-        </a>
-    </nav>
-    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
-        <a href="solat.html" class="flex items-center space-x-2">
-            <svg
-                class="w-6 h-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-            <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 14l9-5-9-5-9 5 9 5zM5 12h13"
-        />
-    </svg>
-    <span>Waktu Solat</span>
-        </a>
-    </nav>
-    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
-        <a href="marketplace.html" class="flex items-center space-x-2">
-            <svg
-                class="w-6 h-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-            <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 14l9-5-9-5-9 5 9 5zM5 12h13"
-        />
-    </svg>
-    <span>Marketplace</span>
-        </a>
-    </nav>
-    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
-        <a href="musik.html" class="flex items-center space-x-2">
-            <svg
-                class="w-6 h-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-            <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 5l7 7-7 7"
-        />
-    </svg>
-    <span>Music</span>
-        </a>
-    </nav>
-    <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
-        <a href="elearning.html" class="flex items-center space-x-2">
-            <svg
-                class="w-6 h-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-            <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 10V3L4 14h7v7l9-11h-7z"
-        />
-    </svg>
-    <span>Sky-Learning</span>
-        </a>
-    </nav>
-             <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
-        <a href="alquran.html" class="flex items-center space-x-2">
-            <svg
-                class="w-6 h-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-            <path
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    stroke-width="2"
-    d="M10 10L20 10L20 20L10 20ZM15 15L5 15L5 5L15 5Z"
-/>
-    </svg>
-    <span>Al-Quran</span>
-        </a>
-    </nav>
-            <nav class="flex flex-col flex-1 w-64 p-4 mt-2 menu-nav"> 
-        <a href="translate.html" class="flex items-center space-x-2">
-            <svg
-                class="w-6 h-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-            <path
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    stroke-width="2"
-    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0-2a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm-.82-9.879a1 1 0 1 0 1.414-1.414l2.121 2.121a1 1 0 0 0 0 1.414L10.596 13.1a1 1 0 0 0-1.414-1.414l1.57-1.571-1.563-1.562zM8 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm1.879 4.82a1 1 0 0 0-1.414-1.414l-2.121 2.121a1 1 0 0 0 0 1.414l2.121 2.121a1 1 0 1 0 1.414-1.414l-1.57-1.571 1.563-1.562zM11 10a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"
-/>
-    </svg>
-    <span>translate</span>
-        </a>
-    </nav>
-          <div class="flex-shrink-0 p-4">
-            <button class="flex items-center space-x-2">
-              <svg
-                aria-hidden="true"
-                class="w-6 h-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
-              </svg>
-              <span>Logout</span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <main class="flex flex-col items-center justify-center flex-1">
-        <!-- Page content -->
-        <button @click="isSidebarOpen = true" class="fixed p-2 text-white bg-black rounded-lg top-5 left-5">
-          <svg
-            class="w-6 h-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <span class="sr-only">Open menu</span>
-        </button>
-        <div class="bg-gray-100 p-4">
-
-            <div class="border-1 shadow-lg shadow-gray-700 rounded-lg">
-            </div>
-           <!--
-  Heads up! 👋
-
-  Plugins:
-    - @tailwindcss/forms
--->
-
-<header class="bg-gray-50">
-    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-      <div class="sm:flex sm:items-center sm:justify-between">
-        <div class="text-center sm:text-left">
-          <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">Welcome Back, RISKY!</h1>
-  
-          <p class="mt-1.5 text-sm text-gray-500">Scroll ke bawah untuk melihat kalender! 🎉</p>
-        </div>
-  
-        <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
-        </div>
-      </div>
-    </div>
-  </header>
-        </div>
-        </div>
-                <!-- top content disini adalah isi nya -->
-      <!-- component -->
-<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-<script defer src="https://unpkg.com/alpinejs@3.2.1/dist/cdn.min.js"></script>
-<div class="w-full p-2 m-2 bg-gray-100 rounded-lg shadow">
-    <div class="flex flex-wrap justify-center" x-data="genCalendar()" x-init="hozirgivaqt()" x-cloak>
-        <div class="flex flex-wrap w-full h-12 p-1 m-1 text-xl font-bold bg-white rounded-lg shadow-lg">
-            <p class="w-1/6 p-1 text-center text-green-900 shadow-md cursor-pointer hover:text-green-600 hover:shadow-inner bg-gray-50 rounded-l-md" @click="changeMonth(-1)"><svg xmlns="http://www.w3.org/2000/svg" class="block w-6 h-8 m-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-                </svg></p>
-            <p class="w-2/3 p-1 text-center text-green-900 shadow-md bg-gray-50" x-text="month_names[currentMonth] + ' ' + year"></p>
-            <p class="w-1/6 p-1 text-center text-green-900 shadow-md cursor-pointer hover:text-green-600 hover:shadow-inner bg-gray-50 rounded-r-md" @click="changeMonth(1)"><svg xmlns="http://www.w3.org/2000/svg" class="block w-6 h-8 m-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg></p>
-        </div>
-        <div class="p-1 m-1 font-sans bg-white rounded shadow-md lg:w-72 w-80 bg-blend-luminosity bg-gradient-to-b from-green-50 via-white to-green-50">
-            <p class="p-1 text-xl font-semibold text-center text-indigo-800" x-text="month_names[currentMonth]"></p>
-            <div class="p-1 m-1">
-                <div class="grid grid-cols-7 font-semibold text-green-800 border-b-2">
-                    <template x-for="days in day_names">
-                        <div class="grid place-items-center">
-                            <p x-text="days"></p>
-                        </div>
-                    </template>
-                </div>
-                <!-- calendar raqamlari bloki-->
-                <div class="grid grid-cols-7 gap-1 font-semibold text-center text-gray-800 ">
-                    <template x-for="kun in daysgenerater()">
-                        <div :class="{' ring-green-400 ring-4 rounded-full': isbugun(kun,currentMonth) == true, 'text-red-600': isyakshanba(kun,currentMonth) == true , ' hover:bg-green-100': isbugun(kun,currentMonth) == false }">
-                            <p x-text="kun"></p>
-                        </div>
-                    </template>
-                </div>
-                <!-- calendar raqamlari bloki oxiri-->
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    function genCalendar() {
-        return {
-            month_names: ['January', 'February', 'Maret', 'April', 'May', 'Juny', 'Jully', 'Agustus', 'September', 'Oktober', 'Novemberr', 'Desember'],
-            day_names: ['sen', 'Sel', 'rab', 'kam', 'Jum', 'Sab', 'min'],
-            year: '',
-            currentMonth: '',
-            days_of_month() {
-                kabisa = (yearin) => { return (yearin % 4 === 0 && yearin % 100 !== 0 && yearin % 400 !== 0) || (yearin % 100 === 0 && yearin % 400 === 0) };
-                fevral = (yearin) => { return kabisa(yearin) ? 29 : 28 };
-                return [31, fevral(this.year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-            },
-            hafta(sol, ma) {
-                let haftakuni = new Date(sol, ma).getDay();
-                switch (haftakuni) { // hafta kuni Dushanbadan boshlangani uchun hak)
-                    case 0:
-                        haftakuni = 6;
-                        break;
-                    case 1:
-                        haftakuni = 0;
-                        break;
-                    case 2:
-                        haftakuni = 1;
-                        break;
-                    case 3:
-                        haftakuni = 2;
-                        break;
-                    case 4:
-                        haftakuni = 3;
-                        break;
-                    case 5:
-                        haftakuni = 4;
-                        break;
-                    case 6:
-                        haftakuni = 5;
-                        break;
-                    default:
-                        haftakuni = new Date(sol, ma).getDay()
-                        break;
-                }
-                return haftakuni;
-            },
-            daysgenerater() {
-                let days = [];
-                for (let i = 1; i <= this.days_of_month()[this.currentMonth]; i++) {
-                    days.push(i);
-                }
-                let emptyDays = new Array(this.hafta(this.year, this.currentMonth)).fill('');
-                return emptyDays.concat(days);
-            },
-            hozirgivaqt() {
-                let today = new Date();
-                this.year = today.getFullYear();
-                this.currentMonth = today.getMonth();
-            },
-            isbugun(kun, oy) {
-                const today = new Date();
-                const dayintable = new Date(this.year, oy, kun);
-                return today.toDateString() === dayintable.toDateString() ? true : false;
-            },
-            isyakshanba(kun, oy) {
-                const dayintable = new Date(this.year, oy, kun);
-                return dayintable.getDay() == 0 ? true : false;
-            },
-            changeMonth(step) {
-                this.currentMonth += step;
-                if (this.currentMonth < 0) {
-                    this.currentMonth = 11;
-                    this.year -= 1;
-                }
-                if (this.currentMonth > 11) {
-                    this.currentMonth = 0;
-                    this.year += 1;
-                }
-            }
+    <style>
+        /* Style for body and particle effect */
+        .card-container1 {
+            background: rgba(51, 51, 51, 0.7); /* Warna hijau pekat dengan opasitas */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative; /* Tambahkan agar efek partikel tetap di dalam kartu */
         }
-    }
-</script>
-
-
-                    
-                <!-- end nya disini -->
-                  
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.1/alpine.js"></script>
-  <script>
-      const setup = () => {
-      return {
-              isSidebarOpen: false,
-          }
-      }
-  </script>
     
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+        /* ini untuk style menu */
+        .card-container1 {
+            background-color: transparent; /* Hapus background-color ini */
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .icon-button {
+            background: none;
+            position: relative; /* Tambahkan agar efek partikel tetap di dalam kartu */
+            border: none;
+            cursor: pointer;
+            font-size: 3.2rem;
+            margin: 10px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .icon-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+        /* Gaya Neon */
+        .neon {
+            color: #d8cdf1; /* Warna teks putih */
+            text-shadow: 0 0 5px #00fff9, 0 0 10px #329e9c, 0 0 15px #00fff9, 0 0 20px #00fff9; /* Bayangan teks berwarna neon */
+        }
+        /* ini end style menu */
+    </style>
+    
+    <!-- component -->
+    <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');">
+        <div class="flex h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
+            <!-- Loading screen -->
+            <div x-ref="loading" class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-blue-600">
+                Loading abgkuu mohon bersabar.....
+            </div>
+
+
+            <!-- Navigation Buttons -->
+            <!-- Particle effect container -->
+            <div id="particles-js">  </div>
+            <div class="card-container1">
+
+                <div class="flex justify-center flex-wrap mt-5">
+                    <!-- Particle effect container -->
+            <div id="particles-js">  </div>
+                    <a href="index.html" class="icon-button neon">
+                        <i class="fas fa-home"></i>
+                    </a>
+                    <a href="kalku.html" class="icon-button neon">
+                        <i class="fas fa-calculator"></i>
+                    </a>
+                    <a href="kalender.html" class="icon-button neon">
+                        <i class="far fa-calendar-alt"></i>
+                    </a>
+                    <a href="solat.html" class="icon-button neon">
+                        <i class="fas fa-praying-hands"></i>
+                    </a>
+                    <a href="marketplace.html" class="icon-button neon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <a href="musik.html" class="icon-button neon">
+                        <i class="fas fa-music"></i>
+                    </a>
+                    <a href="elearning.html" class="icon-button neon">
+                        <i class="fas fa-book"></i>
+                    </a>
+                    <a href="alquran.html" class="icon-button neon">
+                        <i class="fas fa-quran"></i>
+                    </a>
+                    <a href="translate.html" class="icon-button neon">
+                        <i class="fas fa-language"></i>
+                    </a>
+
+                    <!-- top content disini adalah isi nya -->
+        
+                    <!-- component -->
+                    <div class="w-full p-2 m-2 bg-gray-100 rounded-lg shadow" style="position: relative; z-index: 1;">
+                        <div id="particles-js"></div> <!-- Pindahkan ini ke dalam card -->
+                        <div class="flex flex-wrap justify-center" x-data="genCalendar()" x-init="hozirgivaqt()" x-cloak>
+                      
+                            <div class="flex flex-wrap w-full h-12 p-1 m-1 text-xl font-bold bg-white rounded-lg shadow-lg">
+                                <p class="w-1/6 p-1 text-center text-green-900 shadow-md cursor-pointer hover:text-green-600 hover:shadow-inner bg-gray-50 rounded-l-md" @click="changeMonth(-1)"><svg xmlns="http://www.w3.org/2000/svg" class="block w-6 h-8 m-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                                    </svg></p>
+                                <p class="w-2/3 p-1 text-center text-green-900 shadow-md bg-gray-50" x-text="month_names[currentMonth] + ' ' + year"></p>
+                                <p class="w-1/6 p-1 text-center text-green-900 shadow-md cursor-pointer hover:text-green-600 hover:shadow-inner bg-gray-50 rounded-r-md" @click="changeMonth(1)"><svg xmlns="http://www.w3.org/2000/svg" class="block w-6 h-8 m-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg></p>
+                            </div>
+                            <div class="p-1 m-1 font-san bg-white rounded shadow-md lg:w-72 w-80 bg-blend-luminosity bg-gradient-to-b from-green-50 via-white to-green-50">
+                                <p class="p-1 text-xl font-semibold text-center text-indigo-800" x-text="month_names[currentMonth]"></p>
+                                <div class="p-1 m-1">
+                                <div class="grid grid-cols-7 font-semibold text-green-800 border-b-2">
+                                <template x-for="days in day_names">
+                                <div class="grid place-items-center">
+                                <p x-text="days"></p>
+                                </div>
+                                </template>
+                                </div>
+                                <!-- calendar raqamlari bloki-->
+                                <div class="grid grid-cols-7 gap-1 font-semibold text-center text-gray-800 ">
+                                <template x-for="kun in daysgenerater()">
+                                <div :class="{' ring-green-400 ring-4 rounded-full': isbugun(kun,currentMonth) == true, 'text-red-600': isyakshanba(kun,currentMonth) == true , ' hover:bg-green-100': isbugun(kun,currentMonth) == false }">
+                                <p x-text="kun"></p>
+                                </div>
+                                </template>
+                                </div>
+                                <!-- calendar raqamlari bloki oxiri-->
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                <script>
+                                function genCalendar() {
+                                return {
+                                month_names: ['January', 'February', 'Maret', 'April', 'May', 'Juny', 'Jully', 'Agustus', 'September', 'Oktober', 'Novemberr', 'Desember'],
+                                day_names: ['sen', 'Sel', 'rab', 'kam', 'Jum', 'Sab', 'min'],
+                                year: '',
+                                currentMonth: '',
+                                days_of_month() {
+                                kabisa = (yearin) => { return (yearin % 4 === 0 && yearin % 100 !== 0 && yearin % 400 !== 0) || (yearin % 100 === 0 && yearin % 400 === 0) };
+                                fevral = (yearin) => { return kabisa(yearin) ? 29 : 28 };
+                                return [31, fevral(this.year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                                },
+                                hafta(sol, ma) {
+                                let haftakuni = new Date(sol, ma).getDay();
+                                switch (haftakuni) { // hafta kuni Dushanbadan boshlangani uchun hak)
+                                case 0:
+                                haftakuni = 6;
+                                break;
+                                case 1:
+                                haftakuni = 0;
+                                break;
+                                case 2:
+                                haftakuni = 1;
+                                break;
+                                case 3:
+                                haftakuni = 2;
+                                break;
+                                case 4:
+                                haftakuni = 3;
+                                break;
+                                case 5:
+                                haftakuni = 4;
+                                break;
+                                case 6:
+                                haftakuni = 5;
+                                break;
+                                default:
+                                haftakuni = new Date(sol, ma).getDay()
+                                break;
+                                }
+                                return haftakuni;
+                                },
+                                daysgenerater() {
+                                let days = [];
+                                for (let i = 1; i <= this.days_of_month()[this.currentMonth]; i++) {
+                                days.push(i);
+                                }
+                                let emptyDays = new Array(this.hafta(this.year, this.currentMonth)).fill('');
+                                return emptyDays.concat(days);
+                                },
+                                hozirgivaqt() {
+                                let today = new Date();
+                                this.year = today.getFullYear();
+                                this.currentMonth = today.getMonth();
+                                },
+                                isbugun(kun, oy) {
+                                const today = new Date();
+                                const dayintable = new Date(this.year, oy, kun);
+                                return today.toDateString() === dayintable.toDateString() ? true : false;
+                                },
+                                isyakshanba(kun, oy) {
+                                const dayintable = new Date(this.year, oy, kun);
+                                return dayintable.getDay() == 0 ? true : false;
+                                },
+                                changeMonth(step) {
+                                this.currentMonth += step;
+                                if (this.currentMonth < 0) {
+                                this.currentMonth = 11;
+                                this.year -= 1;
+                                }
+                                if (this.currentMonth > 11) {
+                                this.currentMonth = 0;
+                                this.year += 1;
+                                }
+                                }
+                                }
+                                }
+                                </script>
+                                                <!-- end nya disini -->
+
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.1/alpine.js"></script>
+                <script>
+                    const setup = () => {
+                        return {
+                            isSidebarOpen: false,
+                        }
+                    }
+                </script>
+                <script>
+                    // Fungsi untuk kembali ke halaman sebelumnya
+                    function goBack() {
+                        window.history.back();
+                    }
+                </script>
+                <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+                <script>
+                    particlesJS("particles-js", {
+                        "particles": {
+                            "number": {
+                                "value": 80,
+                                "density": {
+                                    "enable": true,
+                                    "value_area": 800
+                                }
+                            },
+                            "color": {
+                                "value": "#333"
+                            },
+                            "shape": {
+                                "type": "circle",
+                                "stroke": {
+                                    "width": 0,
+                                    "color": "#333"
+                                },
+                                "polygon": {
+                                    "nb_sides": 5
+                                },
+                            },
+                            "opacity": {
+                                "value": 0.5,
+                                "random": false,
+                                "anim": {
+                                    "enable": false,
+                                    "speed": 1,
+                                    "opacity_min": 0.1,
+                                    "sync": false
+                                }
+                            },
+                            "size": {
+                                "value": 3,
+                                "random": true,
+                                "anim": {
+                                    "enable": false,
+                                    "speed": 40,
+                                    "size_min": 0.1,
+                                    "sync": false
+                                }
+                            },
+                            "line_linked": {
+                                "enable": true,
+                                "distance": 150,
+                                "color": "#333",
+                                "opacity": 0.4,
+                                "width": 1
+                            },
+                            "move": {
+                                "enable": true,
+                                "speed": 6,
+                                "direction": "none",
+                                "random": false,
+                                "straight": false,
+                                "out_mode": "out",
+                                "attract": {
+                                    "enable": false,
+                                    "rotateX": 600,
+                                    "rotateY": 1200
+                                }
+                            }
+                        },
+                        "interactivity": {
+                            "detect_on": "canvas",
+                            "events": {
+                                "onhover": {
+                                    "enable": true,
+                                    "mode": "repulse"
+                                },
+                                "onclick": {
+                                    "enable": true,
+                                        "mode": "push"
+                                    },
+                                    "resize": true
+                                },
+                                "modes": {
+                                    "grab": {
+                                        "distance": 400,
+                                        "line_linked": {
+                                            "opacity": 1
+                                        }
+                                    },
+                                    "bubble": {
+                                        "distance": 400,
+                                        "size": 40,
+                                        "duration": 2,
+                                        "opacity": 8,
+                                        "speed": 3
+                                    },
+                                    "repulse": {
+                                        "distance": 200,
+                                        "duration": 0.4
+                                    },
+                                    "push": {
+                                        "particles_nb": 4
+                                    },
+                                    "remove": {
+                                        "particles_nb": 2
+                                    }
+                                }
+                            },
+                            "retina_detect": true
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
+
