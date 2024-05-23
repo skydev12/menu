@@ -9,216 +9,209 @@
     <style>
         /* ini untuk style menu */
         .card-container1 {
-    background-color: #333; /* Warna hijau pekat */
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
+            background-color: #333; /* Warna hijau pekat */
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
         .icon-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 3.2rem;
-        margin: 10px;
-        padding: 10px 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        position: relative;
-    }
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 3.2rem;
+            margin: 10px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-    .icon-button:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    }
+        .icon-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
 
-    /* Gaya Neon */
-    .neon {
-        color: #d8cdf1; /* Warna teks putih */
-        text-shadow: 0 0 5px #00fff9, 0 0 10px #329e9c, 0 0 15px #00fff9, 0 0 20px #00fff9; /* Bayangan teks berwarna neon */
-    }
-/* ini end style menu */
+        /* Gaya Neon */
+        .neon {
+            color: #d8cdf1; /* Warna teks putih */
+            text-shadow: 0 0 5px #00fff9, 0 0 10px #329e9c, 0 0 15px #00fff9, 0 0 20px #00fff9; /* Bayangan teks berwarna neon */
+        }
+        /* ini end style menu */
 
-     .particle-container {
-    position: relative;
-    overflow: hidden;
-}
+        .particle-container {
+            position: relative;
+            overflow: hidden;
+        }
 
-.particle-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
+        .particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1; /* Menempatkan partikel di depan */
+        }
 
-.card-content {
-    position: relative;
-    z-index: 10;
-}
+        .card-content {
+            position: relative;
+            z-index: 10;
+        }
 
-#particles-js {
-    position: absolute; /* Mengubah dari fixed menjadi absolute */
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 20; /* Menyesuaikan z-indeks agar berada di depan konten kartu */
-}
-
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Menempatkan partikel di depan */
+            pointer-events: none; /* Mengabaikan event pointer sehingga elemen di bawahnya bisa diklik */
+        }
     </style>
 </head>
 <body>
-   <!-- Navigation Buttons -->
-   <div class="card-container1">
-    <div class="flex justify-center flex-wrap mt-5">
-        <a href="index.html" class="icon-button neon">
-            <i class="fas fa-home"></i>
-        </a>
-        <a href="kalku.html" class="icon-button neon">
-            <i class="fas fa-calculator"></i>
-        </a>
-        <a href="kalender.html" class="icon-button neon">
-            <i class="far fa-calendar-alt"></i>
-        </a>
-        <a href="solat.html" class="icon-button neon">
-            <i class="fas fa-praying-hands"></i>
-        </a>
-        <a href="marketplace.html" class="icon-button neon">
-            <i class="fas fa-shopping-cart"></i>
-        </a>
-        <a href="musik.html" class="icon-button neon">
-            <i class="fas fa-music"></i>
-        </a>
-        <a href="elearning.html" class="icon-button neon">
-            <i class="fas fa-book"></i>
-        </a>
-        <a href="alquran.html" class="icon-button neon">
-            <i class="fas fa-quran"></i>
-        </a>
-        <a href="translate.html" class="icon-button neon">
-            <i class="fas fa-language"></i>
-        </a>
-    </div>
-</div>
-<div class="text-center p-10">
-    <h1 class="font-bold text-4xl mb-4">Sky DEV Ops Product</h1>
-    <h1 class="text-3xl">pilih di pilih murmer</h1>
-</div>
-
-<!-- Particle Container -->
-<div id="particles-js"></div>
-<div class="flex justify-center mt-10">
-    <!-- Kartu Produk 1 -->
-    <div class="relative z-10 w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden mx-4">
-        <!-- Efek Partikel di dalam Kartu -->
-        <div class="particle-container">
-            <div id="particles-js-1" class="particle-canvas"></div>
+    <div id="particles-js"></div>
+    <!-- Navigation Buttons -->
+    <div class="card-container1">
+        <div class="flex justify-center flex-wrap mt-5">
+            <a href="index.html" class="icon-button neon">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="kalku.html" class="icon-button neon">
+                <i class="fas fa-calculator"></i>
+            </a>
+            <a href="kalender.html" class="icon-button neon">
+                <i class="far fa-calendar-alt"></i>
+            </a>
+            <a href="solat.html" class="icon-button neon">
+                <i class="fas fa-praying-hands"></i>
+            </a>
+            <a href="marketplace.html" class="icon-button neon">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <a href="musik.html" class="icon-button neon">
+                <i class="fas fa-music"></i>
+            </a>
+            <a href="elearning.html" class="icon-button neon">
+                <i class="fas fa-book"></i>
+            </a>
+            <a href="alquran.html" class="icon-button neon">
+                <i class="fas fa-quran"></i>
+            </a>
+            <a href="translate.html" class="icon-button neon">
+                <i class="fas fa-language"></i>
+            </a>
         </div>
-        <!-- Konten Kartu -->
-        <a href="https://wa.me/+6282173242194?text=bg saya mau beli rubik nya bg">
-            <img src="product.jpg" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
-            <div class="px-4 py-3">
-                <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
-                <p class="text-lg font-bold text-black truncate block capitalize">RUBIK 3x3</p>
-                <div class="flex items-center">
-                    <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.15.000</p>
-                    <del>
-                        <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.20.000</p>
-                    </del>
-                    <div class="ml-auto">
+
+        <div class="text-center p-10">
+            <h1 class="font-bold text-4xl mb-4">Sky DEV Ops Product</h1>
+            <h1 class="text-3xl">pilih di pilih murmer</h1>
+        </div>
+
+        <!-- Particle Container -->
+        <div class="flex justify-center mt-10">
+            <!-- Kartu Produk 1 -->
+            <div class="relative z-10 w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden mx-4">
+                <!-- Efek Partikel di dalam Kartu -->
+                <div class="particle-container">
+                    <div id="particles-js-1" class="particle-canvas"></div>
+                </div>
+                <!-- Konten Kartu -->
+                <a href="https://wa.me/+6282173242194?text=bg saya mau beli rubik nya bg">
+                    <img src="product.jpg" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+                    <div class="px-4 py-3">
+                        <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
+                        <p class="text-lg font-bold text-black truncate block capitalize">RUBIK 3x3</p>
+                        <div class="flex items-center">
+                            <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.15.000</p>
+                            <del>
+                                <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.20.000</p>
+                            </del>
+                            <div class="ml-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-bag-plus" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                                    <path
+                                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Kartu Produk 2 -->
+            <div class="relative z-10 w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden mx-4">
+                <!-- Efek Partikel di dalam Kartu -->
+                <div class="particle-container">
+                    <div id="particles-js-2" class="particle-canvas"></div>
+                </div>
+                <!-- Konten Kartu -->
+                <a href="https://wa.me/+6282173242194?text=bg saya mau beli bengkoang nya bg">
+                    <img src="product2.jpg" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+                    <div class="px-4 py-3">
+                        <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
+                        <p class="text-lg font-bold text-black truncate block capitalize">bengkoang</p>
+                        <div class="flex items-center">
+                        <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.5.000</p>
+                        <del>
+                        <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.7.000</p>
+                        </del>
+                        <div class="ml-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            class="bi bi-bag-plus" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
-                            <path
-                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                                         class="bi bi-bag-plus" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                                                             d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                        <path
+                                                             d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                         </svg>
+                        </div>
+                        </div>
+                        </div>
+                        </a>
+                        </div>
+                                <!-- Kartu Produk 3 -->
+        <div class="relative z-10 w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden mx-4">
+            <!-- Efek Partikel di dalam Kartu -->
+            <div class="particle-container">
+                <div id="particles-js-3" class="particle-canvas"></div>
+            </div>
+            <!-- Konten Kartu -->
+            <a href="https://wa.me/+6282173242194?text=bg saya mau beli nanas nya bg">
+                <img src="product3.jpg" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+                <div class="px-4 py-3">
+                    <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
+                    <p class="text-lg font-bold text-black truncate block capitalize">nanas</p>
+                    <div class="flex items-center">
+                        <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.8.000</p>
+                        <del>
+                            <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.10.000</p>
+                        </del>
+                        <div class="ml-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-bag-plus" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                                <path
+                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
-    </div>
-
-    <!-- Kartu Produk 2 -->
-    <div class="relative z-10 w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden mx-4">
-        <!-- Efek Partikel di dalam Kartu -->
-        <div class="particle-container">
-            <div id="particles-js-2" class="particle-canvas"></div>
+            </a>
         </div>
-        <!-- Konten Kartu -->
-        <a href="https://wa.me/+6282173242194?text=bg saya mau beli bengkoang nya bg">
-            <img src="product2.jpg" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
-            <div class="px-4 py-3">
-                <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
-                <p class="text-lg font-bold text-black truncate block capitalize">bengkoang 1 kg</p>
-                <div class="flex items-center">
-                    <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.8.000</p>
-                    <del>
-                        <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.10.000</p>
-                    </del>
-                    <div class="ml-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            class="bi bi-bag-plus" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
-                            <path
-                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <!-- Kartu Produk 3 -->
-    <div class="relative z-10 w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl overflow-hidden mx-4">
-        <!-- Efek Partikel di dalam Kartu -->
-        <div class="particle-container">
-            <div id="particles-js-3" class="particle-canvas"></div>
-        </div>
-        <!-- Konten Kartu -->
-        <a href="https://wa.me/+6282173242194?text=bg saya mau beli nanas nya bg">
-            <img src="product3.jpg" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
-            <div class="px-4 py-3">
-                <span class="text-gray-400 mr-3 uppercase text-xs">dijual</span>
-                <p class="text-lg font-bold text-black truncate block capitalize">nanas</p>
-                <div class="flex items-center">
-                    <p class="text-lg font-semibold text-black cursor-auto my-3">Rp.8.000</p>
-                    <del>
-                        <p class="text-sm text-gray-600 cursor-auto ml-2">Rp.10.000</p>
-                    </del>
-                    <div class="ml-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            class="bi bi-bag-plus" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
-                            <path
-                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </a>
     </div>
 </div>
-
-
-    
-</section>
 
 <!-- 🛑 Grid Section - Ends Here -->
 
-
 <!-- credit -->
 <div class="text-center py-10 px-10">
-    <div id="particles-js"></div>
     <h2 class="font-bold text-2xl md:text-4xl mb-4">Thanks telah mampir <a href="https://wa.me/+6282173242194?text=bg angkat saya jadi saudara mu"
             class="underline font-black">saudaraku</a> silahkan beli product saya</h2>
 </div>
-
 
 <!-- Support Me 🙏🥰 -->
 <script src="https://riskyx.my.id"></script>
@@ -231,139 +224,137 @@
         });
 </script>
 
-                    
-                <!-- end nya disini -->
-                  
+<!-- end nya disini -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.1/alpine.js"></script>
-  <script>
-      const setup = () => {
-      return {
-              isSidebarOpen: false,
-          }
-      }
-  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.1/alpine.js"></script>
+<script>
+    const setup = () => {
+        return {
+            isSidebarOpen: false,
+        }
+    }
+</script>
 
-  <!-- Include particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  
-  <script>
-      particlesJS("particles-js", {
-          "particles": {
-              "number": {
-                  "value": 100,
-                  "density": {
-                      "enable": true,
-                      "value_area": 800
-                  }
-              },
-              "color": {
-                  "value": "#00ff00"
-              },
-              "shape": {
-                  "type": "circle",
-                  "stroke": {
-                      "width": 0,
-                      "color": "#000000"
-                  },
-                  "polygon": {
-                      "nb_sides": 5
-                  },
-                  "image": {
-                      "src": "img/github.svg",
-                      "width": 100,
-                      "height": 100
-                  }
-              },
-              "opacity": {
-                  "value": 0.5,
-                  "random": false,
-                  "anim": {
-                      "enable": false,
-                      "speed": 1,
-                      "opacity_min": 0.1,
-                      "sync": false
-                  }
-              },
-              "size": {
-                  "value": 3,
-                  "random": true,
-                  "anim": {
-                      "enable": false,
-                      "speed": 40,
-                      "size_min": 0.1,
-                      "sync": false
-                  }
-              },
-              "line_linked": {
-                  "enable": true,
-                  "distance": 150,
-                  "color": "#00ff00",
-                  "opacity": 0.4,
-                  "width": 1
-              },
-              "move": {
-                  "enable": true,
-                  "speed": 6,
-                  "direction": "none",
-                  "random": false,
-                  "straight": false,
-                  "out_mode": "out",
-                  "bounce": false,
-                  "attract": {
-                      "enable": false,
-                      "rotateX": 600,
-                      "rotateY": 1200
-                  }
-              }
-          },
-          "interactivity": {
-              "detect_on": "canvas",
-              "events": {
-                  "onhover": {
-                      "enable": true,
-                      "mode": "repulse"
-                  },
-                  "onclick": {
-                      "enable": true,
-                      "mode": "push"
-                  },
-                  "resize": true
-              },
-              "modes": {
-                  "grab": {
-                      "distance": 400,
-                      "line_linked": {
-                          "opacity": 1
-                      }
-                  },
-                  "bubble": {
-                      "distance": 400,
-                      "size": 40,
-                      "duration": 2,
-                      "opacity": 8,
-                      "speed": 3
-                  },
-                  "repulse": {
-                      "distance": 200,
-                      "duration": 0.4
-                  },
-                  "push": {
-                      "particles_nb": 4
-                  },
-                  "remove": {
-                      "particles_nb": 2
-                  }
-              }
-          },
-          "retina_detect": true
-      });
-  </script>
-  <script>
+<!-- Include particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<script>
+    particlesJS("particles-js", {
+        "particles": {
+            "number": {
+                "value": 100,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": {
+                "value": "#00ff00"
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+                "image": {
+                    "src": "img/github.svg",
+                    "width": 100,
+                    "height": 100
+                }
+            },
+            "opacity": {
+                "value": 0.5,
+                "random": false,
+                "anim": {
+                    "enable": false,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 40,
+                    "size_min": 0.1,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#00ff00",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 6,
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "repulse"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 400,
+                    "line_linked": {
+                        "opacity": 1
+                    }
+                },
+                "bubble": {
+                    "distance": 400,
+                    "size": 40,
+                    "duration": 2,
+                    "opacity": 8,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 200,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": true
+    });
+</script>
+<script>
     // Fungsi untuk kembali ke halaman sebelumnya
     function goBack() {
         window.history.back();
-    }
-    </script>
+    }
+</script>
 </body>
 </html>
