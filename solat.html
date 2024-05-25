@@ -137,39 +137,40 @@
 
     <!-- Solat -->
     <div class="w-full max-w-4xl p-4 mx-auto">
-        <h1 class="text-center text-4xl font-bold mb-8 text-white">Waktu Sholat Padang Pariaman</h1>
+        <h1 class="text-center text-4xl font-bold mb-8 text-white">Waktu Sholat Padang </h1>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="card rounded-lg shadow-md text-center py-8 px-4">
                 <h2 class="text-2xl font-bold mb-4">Subuh</h2>
-                <p class="prayer-time text-lg">Subuh: <span id="subuhShubuh">04.51</span></p>
+                <p class="prayer-time text-lg">Subuh: <span id="subuhShubuh"></span></p>
             </div>
             <div class="card rounded-lg shadow-md text-center py-8 px-4">
                 <h2 class="text-2xl font-bold mb-4">Dzuhur</h2>
-                <p class="prayer-time text-lg">Dzuhur: <span id="dzuhur">12.16</span></p>
+                <p class="prayer-time text-lg">Dzuhur: <span id="dzuhur"></span></p>
             </div>
             <div class="card rounded-lg shadow-md text-center py-8 px-4">
                 <h2 class="text-2xl font-bold mb-4">Asar</h2>
-                <p class="prayer-time text-lg">Asar: <span id="asar">15.40</span></p>
+                <p class="prayer-time text-lg">Asar: <span id="asar"></span></p>
             </div>
             <div class="card rounded-lg shadow-md text-center py-8 px-4">
                 <h2 class="text-2xl font-bold mb-4">Magrib</h2>
-                <p class="prayer-time text-lg">Magrib: <span id="magrib">18.19</span></p>
+                <p class="prayer-time text-lg">Magrib: <span id="magrib"></span></p>
             </div>
             <div class="card rounded-lg shadow-md text-center py-8 px-4">
                 <h2 class="text-2xl font-bold mb-4">Isya</h2>
-                <p class="prayer-time text-lg">Isya: <span id="isya">19.32</span></p>
+                <p class="prayer-time text-lg">Isya: <span id="isya"></span></p>
             </div>
         </div>
     </div>
 
     <script>
-        const API_URL = 'https://jadwalsholat.web.id/jadwal-sholat/kab/kabupaten-padang-pariaman';
-        // Ganti dengan API waktu sholat wilayah Padang Pariaman
+        const API_URL = 'https://api.aladhan.com/v1/timingsByCity?city=Padang&country=Indonesia&method=2';
 
         async function fetchPrayerTimes() {
             try {
                 const response = await fetch(API_URL);
                 const data = await response.json();
+
+                const timings = data.data.timings;
 
                 const subuhShubuh = document.getElementById('subuhShubuh');
                 const dzuhur = document.getElementById('dzuhur');
@@ -177,13 +178,13 @@
                 const magrib = document.getElementById('magrib');
                 const isya = document.getElementById('isya');
 
-                subuhShubuh.textContent = data.results.datetime[0].imsak;
-                dzuhur.textContent = data.results.datetime[0].dzuhur;
-                asar.textContent = data.results.datetime[0].ashar;
-                magrib.textContent = data.results.datetime[0].maghrib;
-                isya.textContent = data.results.datetime[0].isya;
+                subuhShubuh.textContent = timings.Fajr;
+                dzuhur.textContent = timings.Dhuhr;
+                asar.textContent = timings.Asr;
+                magrib.textContent = timings.Maghrib;
+                isya.textContent = timings.Isha;
             } catch (error) {
-                console.error(error);
+                console.error('Error fetching prayer times:', error);
             }
         }
 
