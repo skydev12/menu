@@ -8,70 +8,69 @@
     <title>Sky Dev Ops</title>
     <style>
         /* Neon Animation untuk profil */
-@keyframes neon {
-    0% { filter: blur(5px) brightness(150%); }
-    50% { filter: blur(10px) brightness(200%); }
-    100% { filter: blur(5px) brightness(150%); }
-}
+        @keyframes neon {
+            0% { filter: blur(5px) brightness(150%); }
+            50% { filter: blur(10px) brightness(200%); }
+            100% { filter: blur(5px) brightness(150%); }
+        }
 
-.neon-animation {
-    animation: neon 1.5s infinite alternate;
-}
+        .neon-animation {
+            animation: neon 1.5s infinite alternate;
+        }
 
+        .neon-text {
+            animation: text-move 1s ease-in-out infinite alternate;
+        }
 
-.neon-text {
-    animation: text-move 1s ease-in-out infinite alternate;
-}
-
-         /* Style Card yang keren  untuk my contact*/
-    .bg-gray-800 {
-        background-color: #1a202c; /* Warna background card */
-    }
-    
-    .neon {
-        color: #fff; /* Warna teks putih */
-        text-shadow: 0 0 5px #00fff9, 0 0 10px #00fff9, 0 0 15px #00fff9, 0 0 20px #00fff9; /* Bayangan teks berwarna neon */
-        transition: text-shadow 0.3s ease-in-out; /* Animasi perubahan bayangan teks */
-    }
-    
-    .neon:hover {
-        text-shadow: 0 0 10px #00fff9, 0 0 20px #00fff9, 0 0 30px #00fff9, 0 0 40px #00fff9; /* Bayangan teks berwarna neon saat hover */
-    }
-    /* disini end untuk profil */
-    /* disini end my contact */
+        /* Style Card yang keren untuk my contact */
+        .bg-gray-800 {
+            background-color: #1a202c; /* Warna background card */
+        }
+        
+        .neon {
+            color: #fff; /* Warna teks putih */
+            text-shadow: 0 0 5px #00fff9, 0 0 10px #00fff9, 0 0 15px #00fff9, 0 0 20px #00fff9; /* Bayangan teks berwarna neon */
+            transition: text-shadow 0.3s ease-in-out; /* Animasi perubahan bayangan teks */
+        }
+        
+        .neon:hover {
+            text-shadow: 0 0 10px #00fff9, 0 0 20px #00fff9, 0 0 30px #00fff9, 0 0 40px #00fff9; /* Bayangan teks berwarna neon saat hover */
+        }
+        /* disini end untuk profil */
+        /* disini end my contact */
 
         /* ini untuk style menu */
         .card-container1 {
-    background-color: #333; /* Warna hijau pekat */
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
+            background-color: #333; /* Warna hijau pekat */
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
         .icon-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 3.2rem;
-        margin: 10px;
-        padding: 10px 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        position: relative;
-    }
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 3.2rem;
+            margin: 10px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-    .icon-button:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    }
+        .icon-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
 
-    /* Gaya Neon */
-    .neon {
-        color: #d8cdf1; /* Warna teks putih */
-        text-shadow: 0 0 5px #00fff9, 0 0 10px #329e9c, 0 0 15px #00fff9, 0 0 20px #00fff9; /* Bayangan teks berwarna neon */
-    }
-/* ini end style menu */
-/* ini untuk style card skill */
+        /* Gaya Neon */
+        .neon {
+            color: #d8cdf1; /* Warna teks putih */
+            text-shadow: 0 0 5px #00fff9, 0 0 10px #329e9c, 0 0 15px #00fff9, 0 0 20px #00fff9; /* Bayangan teks berwarna neon */
+        }
+        /* ini end style menu */
+        /* ini untuk style card skill */
         .card {
             background-color: #333;
             border-radius: 10px;
@@ -110,26 +109,37 @@
             }
         }
 
-        /* ini end nya */
+        .premium-button {
+            background-color: #ff007f; /* Pink background */
+            color: #fff; /* White text */
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .premium-button:hover {
+            background-color: #ff3399; /* Darker pink on hover */
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.8);
+        }
     </style>
 </head>
 <body class="bg-gray-100">
 
-   <!-- Profile Section -->
-<div class="flex flex-col sm:flex-row items-center bg-very-dark-gray-500 p-5 rounded-t-lg">
-    <div class="h-40 w-40 overflow-hidden rounded-full neon-animation">
-        <img src="profil.jpg" alt="Profile Picture" class="object-cover h-full w-full"/>
-        <div class="line-animation">
+    <!-- Profile Section -->
+    <div class="flex flex-col sm:flex-row items-center bg-very-dark-gray-500 p-5 rounded-t-lg">
+        <div class="h-40 w-40 overflow-hidden rounded-full neon-animation">
+            <img src="profil.jpg" alt="Profile Picture" class="object-cover h-full w-full"/>
+        </div>
+        <div class="line-animation flex flex-col sm:flex-row items-center sm:ml-5 mt-5 sm:mt-0">
+            <div class="text-center sm:text-left">
+                <p class="font-poppins font-bold text-dark text-2xl sm:text-4xl neon-text">RISKY DARLIS</p>
+                <p class="text-dark">Software Engineer</p>
+            </div>
+            <a href="kegiatan.html" class="premium-button sm:ml-5 mt-3 sm:mt-0">Premium aplikasi kegiatan </a>
+        </div>
     </div>
-</div>
-<div class="line-animation">
-    <div class="text-center sm:text-left sm:ml-5 mt-5 sm:mt-0">
-        <p class="font-poppins font-bold text-dark text-2xl sm:text-4xl neon-text">RISKY DARLIS</p>
-        <p class="text-dark">Software Engineer</p>
-    </div>
-</div>
-</div>
-
 
     <!-- Navigation Buttons -->
     <div class="card-container1">
@@ -278,39 +288,45 @@
         </div>
     </div>
     
-        <!-- Skills Section -->
-        <div class="flex flex-col">
-            <div class="card">
-                <div class="card-body">
-                    <div class="flex flex-wrap justify-center">
-                        <div class="w-1/2 sm:w-1/4 p-4">
-                            <a class="flex items-center justify-center text-gray-700 hover:text-orange-600 neon">
-                                <i class="fas fa-laptop-code"></i>
-                            </a>
-                            <div class="ml-2 text-lg font-poppins font-bold text-gray-700">Oprek Aplikasi</div>
-                        </div>
-                        <div class="w-1/2 sm:w-1/4 p-4">
-                            <a class="flex items-center justify-center text-gray-700 hover:text-orange-600 neon">
-                                <i class="fas fa-database"></i>
-                            </a>
-                            <div class="ml-2 text-lg font-poppins font-bold text-gray-700">Database Management</div>
-                        </div>
-                        <div class="w-1/2 sm:w-1/4 p-4">
-                            <a class="flex items-center justify-center text-gray-700 hover:text-orange-600 neon">
-                                <i class="fas fa-code"></i>
-                            </a>
-                            <div class="ml-2 text-lg font-poppins font-bold text-gray-700">Web Development</div>
-                        </div>
-                        <div class="w-1/2 sm:w-1/4 p-4">
-                            <a class="flex items-center justify-center text-gray-700 hover:text-orange-600 neon">
-                                <i class="fas fa-mobile-alt"></i>
-                            </a>
-                            <div class="ml-2 text-lg font-poppins font-bold text-gray-700">Mobile Development</div>
-                        </div>
+    <!-- Skills Section -->
+    <div class="flex flex-col">
+        <div class="card">
+            <div class="card-body">
+                <div class="flex flex-wrap justify-center">
+                    <div class="w-1/2 sm:w-1/4 p-4">
+                        <a class="flex items-center justify-center text-gray-700 hover:text-orange-600 neon">
+                            <i class="fas fa-laptop-code"></i>
+                        </a>
+                        <div class="ml-2 text-lg font-poppins font-bold text-gray-700">Oprek Aplikasi</div>
+                    </div>
+                    <div class="w-1/2 sm:w-1/4 p-4">
+                        <a class="flex items-center justify-center text-gray-700 hover:text-orange-600 neon">
+                            <i class="fas fa-database"></i>
+                        </a>
+                        <div class="ml-2 text-lg font-poppins font-bold text-gray-700">Database Management</div>
+                    </div>
+                    <div class="w-1/2 sm:w-1/4 p-4">
+                        <a class="flex items-center justify-center text-gray-700 hover:text-orange-600 neon">
+                            <i class="fas fa-code"></i>
+                        </a>
+                        <div class="ml-2 text-lg font-poppins font-bold text-gray-700">Web Development</div>
+                    </div>
+                    <div class="w-1/2 sm:w-1/4 p-4">
+                        <a class="flex items-center justify-center text-gray-700 hover:text-orange-600 neon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </a>
+                        <div class="ml-2 text-lg font-poppins font-bold text-gray-700">Mobile Development</div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Premium Section -->
+    <div id="premium-section" class="p-5 bg-gray-800 rounded-lg shadow-lg mt-5">
+        <h2 class="text-lg font-poppins font-bold text-blue-500">Premium Content</h2>
+        <div class="border-2 w-20 border-blue-500 my-3"></div>
+        <p class="text-white">This is where your premium content will go. Add more details about your premium offerings here.</p>
     </div>
 
     <script>
