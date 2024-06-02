@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Pencatat Kegiatan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full bg-white p-8 rounded shadow-md">
+        <h1 class="text-3xl font-semibold text-center mb-4">Aplikasi Pencatat Kegiatan</h1>
+        <div id="loginForm">
+            <div class="mb-4">
+                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                <input type="text" id="username" name="username" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" id="password" name="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <button onclick="register()" class="mb-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">Daftar</button>
+            <button onclick="login()" class="w-full bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200">Login</button>
+        </div>
+        <div id="loggedIn" class="hidden">
+            <button onclick="logout()" class="mb-4 w-full bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-200">Logout</button>
+            <button onclick="showAddActivityForm()" class="mb-4 w-full bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200">Tambah Kegiatan</button>
+            <button onclick="showActivities()" class="mb-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">Lihat Kegiatan</button>
+            <button onclick="showDeleteActivityForm()" class="mb-4 w-full bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-200">Hapus Kegiatan</button>
+            <button onclick="showHomePage()" class="w-full bg-gray-600 text-white py-2 px-4 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-200">Beranda</button>
+        </div>
+        <div id="addActivityForm" class="hidden">
+            <div class="mb-4">
+                <label for="activityDescription" class="block text-sm font-medium text-gray-700">Deskripsi Kegiatan</label>
+                <input type="text" id="activityDescription" name="activityDescription" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <button onclick="addActivity()" class="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-200">Simpan</button>
+        </div>
+        <div id="activities" class="hidden">
+            <div id="activityCards" class="grid gap-4"></div>
+            <button onclick="showHomePage()" class="w-full bg-gray-600 text-white py-2 px-4 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-200 mt-4">Kembali</button>
+        </div>
+        <div id="deleteActivityForm" class="hidden">
+            <div class="mb-4">
+                <label for="deleteIndex" class="block text-sm font-medium text-gray-700">Indeks Kegiatan yang ingin dihapus</label>
+                <input type="number" id="deleteIndex" name="deleteIndex" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <button onclick="deleteActivity()" class="w-full bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-200">Hapus</button>
+        </div>
+        <div id="homePage" class="hidden">
+            <h2 id="greeting" class="text-lg font-semibold mb-2"></h2>
+            <p id="currentTime"></p>
+        </div>
+    </div>
+
+    <script>
+        function register() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username && password) {
+                // Check if user already exists
+                const existingUser = localStorage.getItem(username);
+                if (existingUser) {
+                    alert("Akun ini sudah ada. Silakan pilih yang lain.");
+                } else {
+                    // Save user data to localStorage
+                    localStorage.setItem(username, JSON.stringify({ username, password }));
+                    alert(`Pengguna ${username} berhasil didaftarkan.`);
+                }
+            } else {
+                alert("Harap isi username dan password.");
+            }
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username && password) {
+                // Check if user exists
+                const userData = JSON.parse(localStorage.getItem(username));
+                if (userData && userData.password === password) {
+                    alert(`Selamat datang ${username}!`);
+                    // Hide login form and show logged-in section
+                    document.getElementById('loginForm').classList.add('hidden');
+                    document.getElementById('loggedIn').classList.remove('hidden');
+                } else {
+                    alert("Username atau password salah.");
+                }
+            } else {
+                alert("Harap isi username dan password.");
+            }
+        }
+
+        function logout() {
+            // Show login form and hide logged-in section
+            document.getElementById('loggedIn').classList.add('hidden');
+            document.getElementById('loginForm').classList.remove('hidden');
+        }
+
+        function showAddActivityForm() {
+            document.getElementById('addActivityForm').classList.remove('hidden');
+            document.getElementById('activities').classList.add('hidden');
+            document.getElementById('deleteActivityForm').classList.add('hidden');
+            document.getElementById('homePage').classList.add('hidden');
+        }
+
+        function addActivity() {
+            const description = document.getElementById('activityDescription').value;
+            if (description) {
+                // Get current date in YYYY-MM-DD format
+                const currentDate = new Date().toISOString().split('T')[0];
+                const activity = {
+                    description: description,
+                    timestamp: new Date().toLocaleString()
+                };
+                // Check if activities already exist for current date
+                let activities = JSON.parse(localStorage.getItem(currentDate)) || [];
+                // Add new activity
+                activities.push(activity);
+                localStorage.setItem(currentDate, JSON.stringify(activities));
+                alert("Kegiatan berhasil ditambahkan.");
+            } else {
+                alert("Harap isi deskripsi kegiatan.");
+            }
+        }
+
+        function showActivities() {
+            const currentDate = new Date().toISOString().split('T')[0];
+            const activities = JSON.parse(localStorage.getItem(currentDate)) || [];
+            const activityCards = document.getElementById('activityCards');
+            activityCards.innerHTML = ''; // Clear previous activity cards
+            if (activities.length > 0) {
+                activities.forEach((activity, index) => {
+                    const card = document.createElement('div');
+                    card.classList.add('p-4', 'bg-gray-200', 'rounded', 'shadow-md');
+                    card.textContent = `${index + 1}. ${activity.timestamp} - ${activity.description}`;
+                    activityCards.appendChild(card);
+                });
+            } else {
+                const card = document.createElement('div');
+                card.classList.add('p-4', 'bg-gray-200', 'rounded', 'shadow-md');
+                card.textContent = "Tidak ada kegiatan untuk hari ini.";
+                activityCards.appendChild(card);
+            }
+            document.getElementById('activities').classList.remove('hidden');
+            document.getElementById('addActivityForm').classList.add('hidden');
+            document.getElementById('deleteActivityForm').classList.add('hidden');
+            document.getElementById('homePage').classList.add('hidden');
+        }
+
+        function showDeleteActivityForm() {
+            document.getElementById('deleteActivityForm').classList.remove('hidden');
+            document.getElementById('addActivityForm').classList.add('hidden');
+            document.getElementById('activities').classList.add('hidden');
+            document.getElementById('homePage').classList.add('hidden');
+        }
+
+        function deleteActivity() {
+            const currentDate = new Date().toISOString().split('T')[0];
+            const deleteIndex = parseInt(document.getElementById('deleteIndex').value, 10);
+            let activities = JSON.parse(localStorage.getItem(currentDate)) || [];
+            if (deleteIndex >= 0 && deleteIndex < activities.length) {
+                activities.splice(deleteIndex, 1);
+                localStorage.setItem(currentDate, JSON.stringify(activities));
+                alert("Kegiatan berhasil dihapus.");
+                showActivities(); // Refresh the activities list
+            } else {
+                alert("Indeks kegiatan tidak valid.");
+            }
+        }
+
+        function showHomePage() {
+            document.getElementById('homePage').classList.remove('hidden');
+            document.getElementById('activities').classList.add('hidden');
+            document.getElementById('addActivityForm').classList.add('hidden');
+            document.getElementById('deleteActivityForm').classList.add('hidden');
+
+            // Get current time and set greeting
+            const now = new Date();
+            const hour = now.getHours();
+            let greeting;
+            if (hour >= 5 && hour < 12) {
+                greeting = "Selamat Pagi";
+            } else if (hour >= 12 && hour < 18) {
+                greeting = "Selamat Siang";
+            } else {
+                greeting = "Selamat Sore";
+            }
+            document.getElementById('greeting').textContent = greeting + ", " + getUsername() + "!";
+            document.getElementById('currentTime').textContent = "Waktu saat ini: " + now.toLocaleTimeString();
+        }
+
+        function getUsername() {
+            // In a real application, you would fetch the username from the server
+            // For simplicity, let's assume the username is always 'User'
+            return 'User';
+        }
+
+        // Initialize homepage when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            showHomePage();
+        });
+    </script>
+</body>
+</html>
