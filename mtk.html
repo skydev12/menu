@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembahasan Soal Matematika</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .glass-container {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.13);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .glass-card h2 {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .glass-card p {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .glass-card ul {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .glass-card li {
+            list-style-type: disc;
+            list-style-position: inside;
+        }
+
+        .glass-card .math-equation {
+            color: #ffffff;
+            margin-top: 0.5rem;
+            overflow-x: auto;
+        }
+
+        .glass-card .math-equation p {
+            margin: 0;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <div class="flex justify-center items-center h-screen">
+        <!-- Soal 1 -->
+        <div class="glass-container">
+            <div class="glass-card">
+                <h2 class="text-lg font-semibold mb-2">Kalkulus Power Of Risky - Soal 1</h2>
+                <p class="mb-4">\[\int (x-2)^5 \, dx \]</p>
+                <h3 class="font-semibold">Pembahasan:</h3>
+                <p class="mb-2">Kita akan menggunakan aturan substitusi untuk menyelesaikan integral ini. Pertama, kita lakukan substitusi dengan \( u = x - 2 \), sehingga \( du = dx \). Kemudian, kita dapat mengekspresikan ulang integral kita dalam hal \( u \), menjadi:</p> 
+                <p>\[\int u^5 \, du \]</p>
+                <p>Selanjutnya, kita dapat menggunakan aturan untuk mengintegrasikan \( u^5 \), yang menghasilkan:</p>
+                <p>\[\frac{1}{6}u^6 + C \]</p>
+                <p>Kita kemudian kembalikan variabel asli kita, \( x \), untuk mendapatkan solusi akhir:</p>
+                <p>\[\frac{1}{6}(x-2)^6 + C \]</p>
+                <p>Jadi, solusi akhir dari integral \(\int (x-2)^5 \, dx\) adalah:</p>
+                <div class="math-equation">
+                    <p>\[
+                        \begin{align*}
+                        \int (x-2)^5 \, dx &= \frac{1}{6} (x - 2)^6 + C \\
+                        \end{align*}
+                    \]</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Soal 2 -->
+        <div class="glass-container">
+            <div class="glass-card">
+                <h2 class="text-lg font-semibold mb-2">Kalkulus Power Of Risky - Soal 2</h2>
+                <p class="mb-4">\[\int \sin(x)\cos(x) \, dx \]</p>
+                <h3 class="font-semibold">Pembahasan:</h3>
+                <p class="mb-4">saya ingin menemukan:</p>
+                <div class="mb-4">
+                    \[
+                    \int \sin(x)\cos(x) \, dx
+                    \]
+                </div>
+                <p class="mb-4">Menggunakan integrasi </p>
+                <ul class="mb-4">
+                    <li>\( u = \sin(x) \) (jadi \( du = \cos(x) \, dx \))</li>
+                    <li>\( dv = \cos(x) \, dx \) (jadi \( v = \sin(x) \))</li>
+                </ul>
+                <p class="mb-4">bisa diselesaikan dengan</p>
+                <div class="mb-4">
+                    \[
+                    \begin{align*}
+                    \int \sin(x) \cos(x) \, dx & = \sin(x) \sin(x) - \int \sin(x) \cos(x) \, dx \\
+                    \int \sin(x) \cos(x) \, dx & = \sin^2(x) - \int \sin(x) \cos(x) \, dx \\
+                    2 \int \sin(x) \cos(x) \, dx & = \sin^2(x) \\
+                    \int \sin(x) \cos(x) \, dx & = \frac{1}{2} \sin^2(x) + C
+                    \end{align*}
+                    \]
+                </div>
+                <p class="mb-4">jadi hasil nya adalah</p>
+                <div class="mb-4">
+                    \[
+                    \int \sin(x) \cos(x) \, dx = \frac{1}{2} \sin^2(x) + C
+                    \]
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
