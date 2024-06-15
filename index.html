@@ -5,7 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
     <title>Sky Dev Ops</title>
+    <style>
+        h2 {
+            position: relative;
+            font-size: 4em;
+            font-weight: 900;
+            color: #fff;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, #000 25%, #000 75%, transparent 100%);
+            animation: animate 5.5s linear forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes animate {
+            0% {
+                left: 100%;
+            }
+            100% {
+                left: -100%;
+            }
+        }
+
+        h2 span {
+            color: #ff022c;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+    </style>
     <style>
         /* Neon Animation untuk profil */
         @keyframes neon {
@@ -123,6 +171,64 @@
             background-color: #ff3399; /* Darker pink on hover */
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.8);
         }
+        /* CSS untuk video pada teks "Risky Development" */
+
+        .video-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+    overflow: hidden;
+}
+
+#text-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    font-weight: 900;
+    color: #e95454;
+    z-index: 1;
+    animation: animateText 5.5s linear forwards 2s;
+    mix-blend-mode: screen;
+}
+
+@keyframes animateText {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-100%);
+    }
+}
+body {
+            background-color: #008000; /* Hijau */
+        }
+
+#video {
+    position: absolute;
+    top: 20%; /* Adjusted from 0 to 20% */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: animateVideo 5.5s linear forwards 2s;
+}
+
+@keyframes animateVideo {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-100%);
+    }
+}
+
     </style>
 </head>
 <body class="bg-gray-100">
@@ -135,7 +241,10 @@
         <div class="line-animation flex flex-col sm:flex-row items-center sm:ml-5 mt-5 sm:mt-0">
             <div class="text-center sm:text-left">
                 <div class="flex items-center mb-2">
-                    <p class="font-poppins font-bold text-dark text-2xl sm:text-4xl neon-text">RISKY DARLIS</p>
+                    <div class="video-container">
+                        <video id="text-video" src="particles.mp4" muted autoplay loop></video>
+    <h2><span>R</span>isky<span>De</span>veloper</h2>
+</div>
                     <img src="R.gif" alt="Nama GIF" class="h-50 w-50 object-cover mr-2">
                 </div>
                 <p class="text-dark">Software Engineer</p> <!-- Memindahkan ini ke dalam div text-center -->
