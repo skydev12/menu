@@ -10,430 +10,459 @@
     <style>
         /* CSS untuk judul h2 */
         h2 {
-            position: relative;
-            font-size: 4em;
-            font-weight: 900;
-            color: #333; /* Warna teks yang lebih gelap */
-            z-index: 1;
-            overflow: hidden;
-        }
+    position: relative;
+    font-size: 4em;
+    font-weight: 900;
+    color: #333; /* Darker text color */
+    z-index: 1;
+    overflow: hidden;
+}
 
-        h2::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 100%;
-            width: 120%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent 0%, #000 25%, #000 75%, transparent 100%);
-            animation: animate 5.5s linear forwards;
-            animation-delay: 2s;
-        }
+h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, #000 25%, #000 75%, transparent 100%);
+    animation: animate 5.5s linear forwards;
+    animation-delay: 2s;
+}
 
-        @keyframes animate {
-            0% {
-                left: 100%;
-            }
-            100% {
-                left: -100%;
-            }
-        }
+@keyframes animate {
+    0% {
+        left: 100%;
+    }
+    100% {
+        left: -100%;
+    }
+}
 
-        h2 span {
-            color: #ff022c;
-        }
+h2 span {
+    color: #ff022c;
+}
 
-        /* CSS untuk video */
-        video {
-            position: absolute;
-            top: 20%; /* Adjusted from 0 to 20% */
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            pointer-events: none;
-            mix-blend-mode: screen;
-            animation: animateVideo 5.5s linear forwards 2s;
-        }
+/* CSS for video */
+video {
+    position: absolute;
+    top: 20%; /* Adjusted from 0 to 20% */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    animation: animateVideo 5.5s linear forwards 2s;
+}
 
-        @keyframes animateVideo {
-            0% {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(-100%);
-            }
-        }
+@keyframes animateVideo {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-100%);
+    }
+}
 
-        /* Neon Animation untuk profil */
-        @keyframes neon {
-            0% { filter: blur(3px) brightness(120%); }
-            50% { filter: blur(5px) brightness(150%); }
-            100% { filter: blur(3px) brightness(120%); }
-        }
+/* Neon Animation for profile */
+@keyframes neon {
+    0% { filter: blur(3px) brightness(120%); }
+    50% { filter: blur(5px) brightness(150%); }
+    100% { filter: blur(3px) brightness(120%); }
+}
 
-        .neon-animation {
-            animation: neon 1.5s infinite alternate;
-        }
+.neon-animation {
+    animation: neon 1.5s infinite alternate;
+}
 
-        .neon-text {
-            animation: text-move 1s ease-in-out infinite alternate;
-        }
+.neon-text {
+    animation: text-move 1s ease-in-out infinite alternate;
+}
 
-        /* Style Card untuk kontak */
-        .bg-gray-800 {
-            background-color: #1a202c; /* Warna background card */
-        }
-        
-        .neon {
-            color: #2e2c2c; /* Warna teks yang lebih gelap */
-            text-shadow: 0 0 3px rgba(78, 99, 99, 0.5), 0 0 6px rgba(48, 114, 27, 0.8); /* Bayangan teks neon yang lebih ringan */
-            transition: text-shadow 0.3s ease-in-out; /* Animasi perubahan bayangan teks */
-        }
-        
-        .neon:hover {
-            text-shadow: 0 0 6px rgba(35, 11, 89, 0.8), 0 0 12px rgb(60, 30, 17)); /* Bayangan teks neon saat hover */
-        }
+/* Style Card for contact */
+.bg-gray-800 {
+    background-color: #1a202c; /* Card background color */
+}
 
-        /* Style untuk menu */
-        .card-container1 {
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        }
+.neon {
+    color: #2e2c2c; /* Darker text color */
+    text-shadow: 0 0 3px rgba(78, 99, 99, 0.5), 0 0 6px rgba(48, 114, 27, 0.8); /* Lighter text shadow */
+    transition: text-shadow 0.3s ease-in-out; /* Text shadow transition */
+}
 
-        .icon-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 3.2rem;
-            margin: 10px;
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Bayangan yang lebih halus */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-        }
+.neon:hover {
+    text-shadow: 0 0 6px rgba(35, 11, 89, 0.8), 0 0 12px rgb(60, 30, 17); /* Text shadow on hover */
+}
 
-        .icon-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Bayangan yang lebih tajam saat hover */
-        }
+/* Style for menu */
+.card-container1 {
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
 
-        /* Gaya Neon */
-        .neon {
-            color: #452626; /* Warna teks yang lebih gelap */
-            text-shadow: 0 0 3px rgba(80, 54, 228, 0.5), 0 0 6px rgba(33, 61, 220, 0.8); /* Bayangan teks neon yang lebih ringan */
-        }
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem; /* Ukuran ikon yang lebih kecil */
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Softer shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
 
-        /* Style untuk kartu skill */
-        .card {
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            margin-bottom: 20px;
-            color: rgb(104, 12, 12);
-            transition: transform 0.5s, box-shadow 0.5s;
-        }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        }
+.icon-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sharper shadow on hover */
+}
 
-        .card-body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+/* Friendly blue neon */
+.neon {
+    color: #2e2c2c; /* Darker text color */
+    text-shadow: 0 0 3px rgba(70, 130, 180, 0.5), 0 0 6px rgba(70, 130, 180, 0.8); /* Friendlier blue text shadow */
+}
 
-        .card-body div {
-            margin-bottom: 10px;
-        }
+/* Style for skill card */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-bottom: 20px;
+    color: rgb(104, 12, 12);
+    transition: transform 0.5s, box-shadow 0.5s;
+}
 
-        .neon {
-            animation: neon 2s infinite;
-        }
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
 
-        @keyframes neon {
-            0%, 100% {
-                box-shadow: 0 0 3px rgba(110, 70, 166, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 10px rgba(54, 79, 222, 0.5);
-            }
-        }
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .premium-button {
-            background-color: #4a7d51; /* Warna latar pink */
-            color: #4c1414; /* Warna teks putih */
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 0 10px rgba(107, 16, 16, 0.5)5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+.card-body div {
+    margin-bottom: 10px;
+}
 
-        .premium-button:hover {
-            background-color: #272124; /* Warna pink yang lebih gelap saat hover */
-            box-shadow: 0 0 15px rgba(45, 44, 44, 0.8);
-        }
+.neon {
+    animation: neon 2s infinite;
+}
 
-        /* CSS untuk video pada teks "Risky Development" */
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: auto;
-            z-index: 0;
-            overflow: hidden;
-        }
+@keyframes neon {
+    0%, 100% {
+        box-shadow: 0 0 3px rgba(70, 130, 180, 0.5); /* Friendlier blue box shadow */
+    }
+    50% {
+        box-shadow: 0 0 10px rgba(70, 130, 180, 0.5); /* Friendlier blue box shadow */
+    }
+}
 
-        #text-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3em;
-            font-weight: 900;
-            color: #e95454; /* Warna teks merah */
-            z-index: 1;
-            animation: animateText 5.5s linear forwards 2s;
-            mix-blend-mode: screen;
-        }
+.premium-button {
+    color: #5a50e8; /* Text color */
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(107, 16, 16, 0.5); /* Box shadow */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-        @keyframes animateText {
-            0% {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(-100%);
-            }
-        }
+.premium-button:hover {
+    background-color: #272124; /* Darker background on hover */
+    box-shadow: 0 0 15px rgba(45, 44, 44, 0.8); /* Sharper shadow on hover */
+}
 
-        /* Background warna sesuai dengan card */
-        body {
-            background-color: #333; /* Warna latar belakang yang sama dengan card */
-            color: #261b1b; /* Warna teks putih untuk kontras */
-            font-family: Arial, sans-serif; /* Font family umum */
-            margin: 0; /* Menghapus margin default */
-            padding: 0; /* Menghapus padding default */
-        }
+/* CSS for video text "Risky Development" */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+    overflow: hidden;
+}
+
+#text-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    font-weight: 900;
+    color: #e95454; /* Red text color */
+    z-index: 1;
+    animation: animateText 5.5s linear forwards 2s;
+    mix-blend-mode: screen;
+}
+
+@keyframes animateText {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-100%);
+    }
+}
+
+/* Background color to match card */
+body {
+    background-color: #333; /* Background color */
+    color: #261b1b; /* Text color */
+    font-family: Arial, sans-serif; /* Common font family */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+.menu {
+    display: none;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.5s ease-in-out;
+}
+
+.menu.show {
+    display: flex;
+    max-width: 100%;
+}
+
+#expand-button {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#expand-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1); /* Latar belakang semi-transparan */
+    backdrop-filter: blur(10px); /* Efek blur */
+    -webkit-backdrop-filter: blur(10px); /* Efek blur untuk Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Border semi-transparan */
+    border-radius: 10px; /* Sudut border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan */
+    padding: 10px; /* Padding */
+}
+
+
     </style>
 </head>
         <div class="button-container">
+           
+  <!-- Profile Section -->
+  <div class="flex flex-col items-center justify-center bg-gray-100 h-64 p-6 rounded-lg shadow-lg mb-4"
+  style="background-image: url('bg1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+ <div class="h-20 w-20 mb-4 overflow-hidden rounded-full">
+    </div>
 
-    <!-- Profile Section -->
     <div class="flex flex-col sm:flex-row items-center bg-very-dark-gray-500 p-5 rounded-t-lg">
         <div class="h-40 w-40 overflow-hidden rounded-full neon-animation">
             <img src="profil.jpg" alt="Profile Picture" class="object-cover h-full w-full"/>
         </div>
         <div class="line-animation flex flex-col sm:flex-row items-center sm:ml-5 mt-5 sm:mt-0">
             <div class="text-center sm:text-left">
-                <div class="flex items-center mb-2">
-                    <p class="text-dark">RISKY DEV</p>
+                <!-- Konten Anda yang diperlukan di sini -->
+            </div>
+        </div>
+        <a href="kegiatan.html" class="premium-button absolute top-0 right-0 mt-3 mr-3 sm:mr-5 sm:mt-5 glass-effect">Premium aplikasi kegiatan</a>
+        <div class="flex justify-center flex-wrap mt-11 ml-auto glass-effect">
+            <button id="expand-button" class="icon-button neon">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div id="menu" class="menu">
+                <a href="index.html" class="icon-button neon">
+                    <i class="fas fa-home"></i>
+                </a>
+                <a href="kalku.html" class="icon-button neon">
+                    <i class="fas fa-calculator"></i>
+                </a>
+                <a href="kalender.html" class="icon-button neon">
+                    <i class="far fa-calendar-alt"></i>
+                </a>
+                <a href="solat.html" class="icon-button neon">
+                    <i class="fas fa-praying-hands"></i>
+                </a>
+                <a href="marketplace.html" class="icon-button neon">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <a href="musik.html" class="icon-button neon">
+                    <i class="fas fa-music"></i>
+                </a>
+                <a href="elearning.html" class="icon-button neon">
+                    <i class="fas fa-book"></i>
+                </a>
+                <a href="alquran.html" class="icon-button neon">
+                    <i class="fas fa-quran"></i>
+                </a>
+                <a href="translate.html" class="icon-button neon">
+                    <i class="fas fa-language"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
-                    <img src="R.gif" alt="Nama GIF" class="h-50 w-50 object-cover mr-2">
-                </div>
-               <!-- Memindahkan ini ke dalam div text-center -->
-            </div>
-            <a href="kegiatan.html" class="premium-button absolute top-0 right-0 mt-3 mr-3 sm:mr-5 sm:mt-5">Premium aplikasi kegiatan</a>
+ <!-- Navigation Buttons -->
+ <div class="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+ style="background-image: url('bg1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<!-- Contact Section -->
+<div class="flex flex-col glass-effect rounded-lg shadow-lg p-6">
+    <h2 class="text-lg font-poppins font-bold text-blue-500">My Contact</h2>
+    <div class="border-2 w-20 border-blue-500 my-3"></div>
+    <div>
+        <div class="flex items-center my-1">
+            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://wa.me/6282173242194">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <div class="ml-2 truncate text-blue-500">082173242194</div>
+        </div>
+        <div class="flex items-center my-1">
+            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://youtube.com/user/XRYMODSYT" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <div class="ml-2 text-blue-500">XRYMODSYT</div>
+        </div>
+        <div class="flex items-center my-1">
+            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://facebook.com/riskydarlis" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <div class="ml-2 text-blue-500">risky darlis</div>
+        </div>
+        <div class="flex items-center my-1">
+            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://instagram.com/riskyx.my.id" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <div class="ml-2 text-blue-500">riskyx.my.id</div>
         </div>
     </div>
-    
-    
+</div>
 
-    <!-- Navigation Buttons -->
-    <div class="card-container1 bg-gray-800">
-        <div class="flex justify-center flex-wrap mt-5">
-            <a href="index.html" class="icon-button neon">
-                <i class="fas fa-home"></i>
+<!-- Second Card -->
+<div class="flex flex-col glass-effect rounded-lg shadow-lg p-6">
+    <h2 class="text-lg font-poppins font-bold text-blue-500">My Projects</h2>
+    <div class="border-2 w-20 border-blue-500 my-3"></div>
+    <div>
+        <div class="flex items-center my-1">
+            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://github.com/riskydarlis" target="_blank">
+                <i class="fab fa-github"></i>
             </a>
-            <a href="kalku.html" class="icon-button neon">
-                <i class="fas fa-calculator"></i>
+            <div class="ml-2 text-blue-500">GitHub</div>
+        </div>
+        <div class="flex items-center my-1">
+            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://bitbucket.org/riskydarlis" target="_blank">
+                <i class="fab fa-bitbucket"></i>
             </a>
-            <a href="kalender.html" class="icon-button neon">
-                <i class="far fa-calendar-alt"></i>
+            <div class="ml-2 text-blue-500">Bitbucket</div>
+        </div>
+        <div class="flex items-center my-1">
+            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://gitlab.com/riskydarlis" target="_blank">
+                <i class="fab fa-gitlab"></i>
             </a>
-            <a href="solat.html" class="icon-button neon">
-                <i class="fas fa-praying-hands"></i>
-            </a>
-            <a href="marketplace.html" class="icon-button neon">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-            <a href="musik.html" class="icon-button neon">
-                <i class="fas fa-music"></i>
-            </a>
-            <a href="elearning.html" class="icon-button neon">
+            <div class="ml-2 text-blue-500">GitLab</div>
+        </div>
+    </div>
+</div>
+
+<!-- Third Card -->
+<div class="flex flex-col glass-effect rounded-lg shadow-lg p-6">
+    <h2 class="text-lg font-poppins font-bold text-blue-500">My Hobbies</h2>
+    <div class="border-2 w-20 border-blue-500 my-3"></div>
+    <div>
+        <div class="flex items-center my-1">
+            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://goodreads.com/riskydarlis" target="_blank">
                 <i class="fas fa-book"></i>
             </a>
-            <a href="alquran.html" class="icon-button neon">
-                <i class="fas fa-quran"></i>
-            </a>
-            <a href="translate.html" class="icon-button neon">
-                <i class="fas fa-language"></i>
-            </a>
+            <div class="ml-2 text-blue-500">Reading</div>
         </div>
-    </div>
-    
+        <div class="flex items-center my-1">
+            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://strava.com/athletes/riskydarlis" target="_blank">
+                <i class="fas fa-bicycle"></i>
+            </a>
+            <div class="ml-2 text-blue-500">Cycling</div>
+        </div>
+        <div class="flex items-center my-1">
+            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://youtube.com/XRYMODSYT" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <div class="ml-2 text-blue-500">Creating Videos</div>
+        </div>
+</div>
+</div>
 
-    <div class="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <!-- Contact Section -->
-        <div class="flex flex-col bg-gray-800 rounded-lg shadow-lg p-6">
-            <h2 class="text-lg font-poppins font-bold text-blue-500">My Contact</h2>
-            <div class="border-2 w-20 border-blue-500 my-3"></div>
-            <div>
-                <div class="flex items-center my-1">
-                    <a class="w-6 text-blue-500 hover:text-orange-600" href="https://wa.me/6282173242194">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <div class="ml-2 truncate text-blue-500">082173242194</div>
-                </div>
-                <div class="flex items-center my-1">
-                    <a class="w-6 text-blue-500 hover:text-orange-600" href="https://youtube.com/user/XRYMODSYT" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <div class="ml-2 text-blue-500">XRYMODSYT</div>
-                </div>
-                <div class="flex items-center my-1">
-                    <a class="w-6 text-blue-500 hover:text-orange-600" href="https://facebook.com/riskydarlis" target="_blank">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <div class="ml-2 text-blue-500">risky darlis</div>
-                </div>
-                <div class="flex items-center my-1">
-                    <a class="w-6 text-blue-500 hover:text-orange-600" href="https://instagram.com/riskyx.my.id" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <div class="ml-2 text-blue-500">riskyx.my.id</div>
-                </div>
-            </div>
+<!-- Fourth Card -->
+<div class="flex flex-col glass-effect rounded-lg shadow-lg p-6">
+<h2 class="text-lg font-poppins font-bold text-blue-500">My Skills</h2>
+<div class="border-2 w-20 border-blue-500 my-3"></div>
+<div>
+    <div class="flex items-center my-1">
+        <span class="w-6 text-blue-500 hover:text-orange-600">
+            <i class="fas fa-code"></i>
+        </span>
+        <div class="ml-2 text-blue-500">Programming</div>
+    </div>
+    <div class="flex items-center my-1">
+        <span class="w-6 text-blue-500 hover:text-orange-600">
+            <i class="fas fa-database"></i>
+        </span>
+        <div class="ml-2 text-blue-500">Database Management</div>
+    </div>
+    <div class="flex items-center my-1">
+        <span class="w-6 text-blue-500 hover:text-orange-600">
+            <i class="fas fa-paint-brush"></i>
+        </span>
+        <div class="ml-2 text-blue-500">Graphic Design</div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Skills Section -->
+<div class="flex flex-col">
+<div class="card glass-effect">
+<div class="card-body">
+    <div class="flex flex-wrap justify-center">
+        <div class="w-1/2 sm:w-1/4 p-4">
+            <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
+                <i class="fas fa-laptop-code"></i>
+            </a>
+            <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Oprek Aplikasi</div>
         </div>
-    
-        <!-- Second Card -->
-        <div class="flex flex-col bg-gray-800 rounded-lg shadow-lg p-6">
-            <h2 class="text-lg font-poppins font-bold text-blue-500">My Projects</h2>
-            <div class="border-2 w-20 border-blue-500 my-3"></div>
-            <div>
-                <div class="flex items-center my-1">
-                    <a class="w-6 text-blue-500 hover:text-orange-600" href="https://github.com/riskydarlis" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <div class="ml-2 text-blue-500">GitHub</div>
-                </div>
-                <div class="flex items-center my-1">
-                    <a class="w-6 text-blue-500 hover:text-orange-600" href="https://bitbucket.org/riskydarlis" target="_blank">
-                        <i class="fab fa-bitbucket"></i>
-                    </a>
-                    <div class="ml-2 text-blue-500">Bitbucket</div>
-                </div>
-                <div class="flex items-center my-1">
-                    <a class="w-6 text-blue-500 hover:text-orange-600" href="https://gitlab.com/riskydarlis" target="_blank">
-                        <i class="fab fa-gitlab"></i>
-                    </a>
-                    <div class="ml-2 text-blue-500">GitLab</div>
-                </div>
-            </div>
+        <div class="w-1/2 sm:w-1/4 p-4">
+            <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
+                <i class="fas fa-database"></i>
+            </a>
+            <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Database Management</div>
         </div>
-    
-        <!-- Third Card -->
-        <div class="flex flex-col bg-gray-800 rounded-lg shadow-lg p-6">
-            <h2 class="text-lg font-poppins font-bold text-blue-500">My Hobbies</h2>
-            <div class="border-2 w-20 border-blue-500 my-3"></div>
-            <div>
-                <div class="flex items-center my-1">
-                    <a class="w-6 text-blue-500 hover:text-orange-600" href="https://goodreads.com/riskydarlis" target="_blank">
-                        <i class="fas fa-book"></i>
-                    </a>
-                    <div class="ml-2 text-blue-500">Reading</div>
-                </div>
-                <div class="flex items-center my-1">
-                    <a class="w-6 text-blue-500 hover:text-orange-600" href="https://strava.com/athletes/riskydarlis" target="_blank">
-                        <i class="fas fa-bicycle"></i>
-                    </a>
-                    <div class="ml-2 text-blue-500">Cycling</div>
-                </div>
-                <div class="flex items-center my-1">
-                    <a class="w-6 text-blue-500 hover:text-orange-600" href="https://youtube.com/XRYMODSYT" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <div class="ml-2 text-blue-500">Creating Videos</div>
-                </div>
-            </div>
+        <div class="w-1/2 sm:w-1/4 p-4">
+            <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
+                <i class="fas fa-code"></i>
+            </a>
+            <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Web Development</div>
         </div>
-    
-        <!-- Fourth Card -->
-        <div class="flex flex-col bg-gray-800 rounded-lg shadow-lg p-6">
-            <h2 class="text-lg font-poppins font-bold text-blue-500">My Skills</h2>
-            <div class="border-2 w-20 border-blue-500 my-3"></div>
-            <div>
-                <div class="flex items-center my-1">
-                    <span class="w-6 text-blue-500 hover:text-orange-600">
-                        <i class="fas fa-code"></i>
-                    </span>
-                    <div class="ml-2 text-blue-500">Programming</div>
-                </div>
-                <div class="flex items-center my-1">
-                    <span class="w-6 text-blue-500 hover:text-orange-600">
-                        <i class="fas fa-database"></i>
-                    </span>
-                    <div class="ml-2 text-blue-500">Database Management</div>
-                </div>
-                <div class="flex items-center my-1">
-                    <span class="w-6 text-blue-500 hover:text-orange-600">
-                        <i class="fas fa-paint-brush"></i>
-                    </span>
-                    <div class="ml-2 text-blue-500">Graphic Design</div>
-                </div>
-            </div>
+        <div class="w-1/2 sm:w-1/4 p-4">
+            <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
+                <i class="fas fa-mobile-alt"></i>
+            </a>
+            <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Mobile Development</div>
         </div>
     </div>
-    
-    <!-- Skills Section -->
-    <div class="flex flex-col">
-        <div class="card bg-gray-800">
-            <div class="card-body">
-                <div class="flex flex-wrap justify-center">
-                    <div class="w-1/2 sm:w-1/4 p-4">
-                        <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
-                            <i class="fas fa-laptop-code"></i>
-                        </a>
-                        <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Oprek Aplikasi</div>
-                    </div>
-                    <div class="w-1/2 sm:w-1/4 p-4">
-                        <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
-                            <i class="fas fa-database"></i>
-                        </a>
-                        <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Database Management</div>
-                    </div>
-                    <div class="w-1/2 sm:w-1/4 p-4">
-                        <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
-                            <i class="fas fa-code"></i>
-                        </a>
-                        <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Web Development</div>
-                    </div>
-                    <div class="w-1/2 sm:w-1/4 p-4">
-                        <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
-                            <i class="fas fa-mobile-alt"></i>
-                        </a>
-                        <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Mobile Development</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
+</div>
+</div>
+</div>
     
    
  <!-- Premium Section -->
     <body class="bg-gray-100">
-   <div id="premium-section" class="p-5 bg-gray-800 rounded-lg shadow-lg mt-5">
+   <div id="premium-section" class="p-5 glass-effect rounded-lg shadow-lg mt-5">
              <div class="button-container">
                  <a href="video.html" class="button-link">
                      <button class="bg-blue-500 text-white px-3 py-1 rounded-full shadow-md hover:bg-blue-600">Video galery</button>
@@ -468,7 +497,7 @@
 
 
      <!-- Premium Section -->
-     <div id="premium-section" class="p-5 bg-gray-800 rounded-lg shadow-lg mt-5">
+     <div id="premium-section" class="p-5 glass-effect rounded-lg shadow-lg mt-5">
         <h2 class="text-lg font-poppins font-bold text-blue-500">my sertifikat</h2>
         <div class="border-2 w-20 border-blue-500 my-3"></div>
         <p class="text-white">sertifikat ini di dapat dengan penuh perjuangan dan rasa tanggung jawab yg sangat besar </p>
@@ -487,6 +516,15 @@
         function goBack() {
             window.history.back();
         }
+        document.getElementById('expand-button').addEventListener('click', function() {
+    var menu = document.getElementById('menu');
+    if (menu.classList.contains('show')) {
+        menu.classList.remove('show');
+    } else {
+        menu.classList.add('show');
+    }
+});
+
     </script>
 </body>
 </html>
