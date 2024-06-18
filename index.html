@@ -121,11 +121,16 @@ video {
     border-radius: 1rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
-#menu {
+.menu-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #menu {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
-}
+    }
 .icon-button {
     background: none;
     border: none;
