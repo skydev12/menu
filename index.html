@@ -128,7 +128,7 @@ video {
         }
         #menu {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 16px;
     }
 .icon-button {
@@ -195,7 +195,7 @@ video {
 }
 
 .premium-button {
-    color: #5a50e8; /* Text color */
+    color: #dbeaec; /* Text color */
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     box-shadow: 0 0 10px rgba(107, 16, 16, 0.5); /* Box shadow */
@@ -282,27 +282,28 @@ body {
 
     </style>
 </head>
-        <div class="button-container">
-           
-  <!-- Profile Section -->
-  <div class="flex flex-col items-center justify-center bg-gray-100 h-64 p-6 rounded-lg shadow-lg mb-4"
-  style="background-image: url('bg1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
- <div class="h-20 w-20 mb-4 overflow-hidden rounded-full">
-    </div>
+<div class="flex flex-col items-center justify-center bg-gray-100 h-64 p-6 rounded-lg shadow-lg mb-4 relative"
+style="background-image: url('bg1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
-    <div class="flex flex-col sm:flex-row items-center bg-very-dark-gray-500 p-5 rounded-t-lg">
-        <div class="h-40 w-40 overflow-hidden rounded-full neon-animation">
-            <img src="profil.jpg" alt="Profile Picture" class="object-cover h-full w-full"/>
+<!-- Profile Section Content -->
+<div class="absolute top-0 right-0 mt-3 mr-3 sm:mr-5 sm:mt-5">
+    <a href="kegiatan.html" class="premium-button absolute top-0 right-0 mt-3 mr-3 sm:mr-5 sm:mt-5 glass-effect text-white ">Premium aplikasi kegiatan</a>
+</div>
+
+<div class="flex flex-col sm:flex-row items-center bg-very-dark-gray-500 p-5 rounded-t-lg">
+    <div class="h-40 w-40 overflow-hidden rounded-full neon-animation">
+        <img src="profil.jpg" alt="Profile Picture" class="object-cover h-full w-full">
+    </div>
+    <div class="line-animation flex flex-col sm:flex-row items-center sm:ml-5 mt-5 sm:mt-0 text-white">
+        <div class="text-center sm:text-left">
+            <!-- Konten profil Anda -->
+            <h2 class="font-bold text-lg text-white">RISKY DEV</h2>
+            <p>bukan masalah hidup tidak adil ,anda aja yg kurang bersyukur.</p>
         </div>
-        <div class="line-animation flex flex-col sm:flex-row items-center sm:ml-5 mt-5 sm:mt-0">
-            <div class="text-center sm:text-left">
-                <!-- Konten Anda yang diperlukan di sini -->
-            </div>
-        </div>
-        <a href="kegiatan.html" class="premium-button absolute top-0 right-0 mt-3 mr-3 sm:mr-5 sm:mt-5 glass-effect">Premium aplikasi kegiatan</a>
-      
     </div>
 </div>
+</div>
+
 
  <!-- Navigation Buttons -->
  <div class="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
@@ -310,237 +311,240 @@ body {
 <!-- Contact Section -->
 
 <div class="flex flex-col glass-effect rounded-lg shadow-lg p-6">
-    <h2 class="text-lg font-poppins font-bold text-blue-500">My Contact</h2>
+    <h2 class="text-lg font-poppins font-bold text-white">My Contact</h2>
     <div class="border-2 w-20 border-blue-500 my-3"></div>
     <div>
         <div class="flex items-center my-1">
-            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://wa.me/6282173242194">
+            <a class="w-6 text-white hover:text-orange-600" href="https://wa.me/6282173242194">
                 <i class="fab fa-whatsapp"></i>
             </a>
-            <div class="ml-2 truncate text-blue-500">082173242194</div>
+            <div class="ml-2 truncate text-white">082173242194</div>
         </div>
         <div class="flex items-center my-1">
-            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://youtube.com/user/XRYMODSYT" target="_blank">
+            <a class="w-6 text-white hover:text-orange-600" href="https://youtube.com/user/XRYMODSYT" target="_blank">
                 <i class="fab fa-youtube"></i>
             </a>
-            <div class="ml-2 text-blue-500">XRYMODSYT</div>
+            <div class="ml-2 text-white">XRYMODSYT</div>
         </div>
         <div class="flex items-center my-1">
-            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://facebook.com/riskydarlis" target="_blank">
+            <a class="w-6 text-white hover:text-orange-600" href="https://facebook.com/riskydarlis" target="_blank">
                 <i class="fab fa-facebook"></i>
             </a>
-            <div class="ml-2 text-blue-500">risky darlis</div>
+            <div class="ml-2 text-white">risky darlis</div>
         </div>
         <div class="flex items-center my-1">
-            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://instagram.com/riskyx.my.id" target="_blank">
+            <a class="w-6 text-white hover:text-orange-600" href="https://instagram.com/riskyx.my.id" target="_blank">
                 <i class="fab fa-instagram"></i>
             </a>
-            <div class="ml-2 text-blue-500">riskyx.my.id</div>
+            <div class="ml-2 text-white">riskyx.my.id</div>
         </div>
     </div>
 </div>
 
 <!-- Second Card -->
 <div class="flex flex-col glass-effect rounded-lg shadow-lg p-6">
-    <h2 class="text-lg font-poppins font-bold text-blue-500">My Projects</h2>
+    <h2 class="text-lg font-poppins font-bold text-white">My Projects</h2>
     <div class="border-2 w-20 border-blue-500 my-3"></div>
     <div>
         <div class="flex items-center my-1">
-            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://github.com/riskydarlis" target="_blank">
+            <a class="w-6 text-white hover:text-orange-600" href="https://github.com/riskydarlis" target="_blank">
                 <i class="fab fa-github"></i>
             </a>
-            <div class="ml-2 text-blue-500">GitHub</div>
+            <div class="ml-2 text-white">GitHub</div>
         </div>
         <div class="flex items-center my-1">
-            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://bitbucket.org/riskydarlis" target="_blank">
+            <a class="w-6 text-white hover:text-orange-600" href="https://bitbucket.org/riskydarlis" target="_blank">
                 <i class="fab fa-bitbucket"></i>
             </a>
-            <div class="ml-2 text-blue-500">Bitbucket</div>
+            <div class="ml-2 text-white">Bitbucket</div>
         </div>
         <div class="flex items-center my-1">
-            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://gitlab.com/riskydarlis" target="_blank">
+            <a class="w-6 text-white hover:text-orange-600" href="https://gitlab.com/riskydarlis" target="_blank">
                 <i class="fab fa-gitlab"></i>
             </a>
-            <div class="ml-2 text-blue-500">GitLab</div>
+            <div class="ml-2 text-white">GitLab</div>
         </div>
     </div>
 </div>
 
 <!-- Third Card -->
 <div class="flex flex-col glass-effect rounded-lg shadow-lg p-6">
-    <h2 class="text-lg font-poppins font-bold text-blue-500">My Hobbies</h2>
+    <h2 class="text-lg font-poppins font-bold text-white">My Hobbies</h2>
     <div class="border-2 w-20 border-blue-500 my-3"></div>
     <div>
         <div class="flex items-center my-1">
-            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://goodreads.com/riskydarlis" target="_blank">
+            <a class="w-6 text-white hover:text-orange-600" href="https://goodreads.com/riskydarlis" target="_blank">
                 <i class="fas fa-book"></i>
             </a>
-            <div class="ml-2 text-blue-500">Reading</div>
+            <div class="ml-2 text-white">Reading</div>
         </div>
         <div class="flex items-center my-1">
-            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://strava.com/athletes/riskydarlis" target="_blank">
+            <a class="w-6 text-white hover:text-orange-600" href="https://strava.com/athletes/riskydarlis" target="_blank">
                 <i class="fas fa-bicycle"></i>
             </a>
-            <div class="ml-2 text-blue-500">Cycling</div>
+            <div class="ml-2 text-white">Cycling</div>
         </div>
         <div class="flex items-center my-1">
-            <a class="w-6 text-blue-500 hover:text-orange-600" href="https://youtube.com/XRYMODSYT" target="_blank">
+            <a class="w-6 text-white hover:text-orange-600" href="https://youtube.com/XRYMODSYT" target="_blank">
                 <i class="fab fa-youtube"></i>
             </a>
-            <div class="ml-2 text-blue-500">Creating Videos</div>
+            <div class="ml-2 text-white">Creating Videos</div>
         </div>
 </div>
 </div>
+
 
 <!-- Fourth Card -->
-<div class="flex flex-col glass-effect rounded-lg shadow-lg p-6">
-<h2 class="text-lg font-poppins font-bold text-blue-500">My Skills</h2>
-<div class="border-2 w-20 border-blue-500 my-3"></div>
-<div>
-    <div class="flex items-center my-1">
-        <span class="w-6 text-blue-500 hover:text-orange-600">
-            <i class="fas fa-code"></i>
-        </span>
-        <div class="ml-2 text-blue-500">Programming</div>
-    </div>
-    <div class="flex items-center my-1">
-        <span class="w-6 text-blue-500 hover:text-orange-600">
-            <i class="fas fa-database"></i>
-        </span>
-        <div class="ml-2 text-blue-500">Database Management</div>
-    </div>
-    <div class="flex items-center my-1">
-        <span class="w-6 text-blue-500 hover:text-orange-600">
-            <i class="fas fa-paint-brush"></i>
-        </span>
-        <div class="ml-2 text-blue-500">Graphic Design</div>
-    </div>
-</div>
-</div>
-<div class="flex justify-center flex-wrap mt-11 ml-auto glass-effect">
-    <button id="expand-button" class="icon-button neon">
-    
-        <i class="fas fa-bars"></i>
-    </button>
-    <div class="menu-container">
-        <div id="menu">
-            <a href="index.html" class="icon-button neon">
-                <i class="fas fa-home"></i>
-            </a>
-            <a href="kalku.html" class="icon-button neon">
-                <i class="fas fa-calculator"></i>
-            </a>
-            <a href="kalender.html" class="icon-button neon">
-                <i class="far fa-calendar-alt"></i>
-            </a>
-            <a href="solat.html" class="icon-button neon">
-                <i class="fas fa-praying-hands"></i>
-            </a>
-            <a href="marketplace.html" class="icon-button neon">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-            <a href="musik.html" class="icon-button neon">
-                <i class="fas fa-music"></i>
-            </a>
-            <a href="elearning.html" class="icon-button neon">
-                <i class="fas fa-book"></i>
-            </a>
-            <a href="alquran.html" class="icon-button neon">
-                <i class="fas fa-quran"></i>
-            </a>
-            <a href="translate.html" class="icon-button neon">
-                <i class="fas fa-language"></i>
-            </a>
-        </div>
-    </div>
-
-
-<!-- Skills Section -->
-<div class="flex flex-col">
-<div class="card glass-effect">
-<div class="card-body">
-    <div class="flex flex-wrap justify-center">
-        <div class="w-1/2 sm:w-1/4 p-4">
-            <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
-                <i class="fas fa-laptop-code"></i>
-            </a>
-            <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Oprek Aplikasi</div>
-        </div>
-        <div class="w-1/2 sm:w-1/4 p-4">
-            <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
-                <i class="fas fa-database"></i>
-            </a>
-            <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Database Management</div>
-        </div>
-        <div class="w-1/2 sm:w-1/4 p-4">
-            <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
+<div class="flex flex-col glass-effect rounded-lg shadow-lg p-6 mb-5">
+    <h2 class="text-lg font-poppins font-bold text-white">My Skills</h2>
+    <div class="border-2 w-20 border-blue-500 my-3"></div>
+    <div>
+        <div class="flex items-center my-1">
+            <span class="w-6 text-white hover:text-orange-600">
                 <i class="fas fa-code"></i>
-            </a>
-            <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Web Development</div>
+            </span>
+            <div class="ml-2 text-white">Programming</div>
         </div>
-        <div class="w-1/2 sm:w-1/4 p-4">
-            <a class="flex items-center justify-center text-blue-500 hover:text-orange-600">
-                <i class="fas fa-mobile-alt"></i>
-            </a>
-            <div class="ml-2 text-lg font-poppins font-bold text-blue-500">Mobile Development</div>
+        <div class="flex items-center my-1">
+            <span class="w-6 text-white hover:text-orange-600">
+                <i class="fas fa-database"></i>
+            </span>
+            <div class="ml-2 text-white">Database Management</div>
+        </div>
+        <div class="flex items-center my-1">
+            <span class="w-6 text-white hover:text-orange-600">
+                <i class="fas fa-paint-brush"></i>
+            </span>
+            <div class="ml-2 text-white">Graphic Design</div>
         </div>
     </div>
 </div>
+
+
+
+<div class="flex flex-col items-start mt-5">
+    <!-- Skills Section -->
+    <div class="card glass-effect w-full max-w-md mb-5 ml-4">
+        <div class="card-body">
+            <div class="flex flex-wrap justify-center">
+                <div class="w-1/2 sm:w-1/4 p-4">
+                    <a class="flex items-center justify-center text-white hover:text-orange-600">
+                        <i class="fas fa-laptop-code"></i>
+                    </a>
+                </div>
+                <div class="w-1/2 sm:w-1/4 p-4">
+                    <a class="flex items-center justify-center text-white hover:text-orange-600">
+                        <i class="fas fa-database"></i>
+                    </a>
+                </div>
+                <div class="w-1/2 sm:w-1/4 p-4">
+                    <a class="flex items-center justify-center text-white hover:text-orange-600">
+                        <i class="fas fa-code"></i>
+                    </a>
+                </div>
+                <div class="w-1/2 sm:w-1/4 p-4">
+                    <a class="flex items-center justify-center text-white hover:text-orange-600">
+                        <i class="fas fa-mobile-alt"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-center flex-wrap mt-11 glass-effect ml-auto mb-5">
+                <button id="expand-button" class="icon-button neon ml-4">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="menu-container">
+                    <div id="menu">
+                        <a href="index.html" class="icon-button neon">
+                            <i class="fas fa-home"></i>
+                        </a>
+                        <a href="kalku.html" class="icon-button neon">
+                            <i class="fas fa-calculator"></i>
+                        </a>
+                        <a href="kalender.html" class="icon-button neon">
+                            <i class="far fa-calendar-alt"></i>
+                        </a>
+                        <a href="solat.html" class="icon-button neon">
+                            <i class="fas fa-praying-hands"></i>
+                        </a>
+                        <a href="marketplace.html" class="icon-button neon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                        <a href="musik.html" class="icon-button neon">
+                            <i class="fas fa-music"></i>
+                        </a>
+                        <a href="elearning.html" class="icon-button neon">
+                            <i class="fas fa-book"></i>
+                        </a>
+                        <a href="alquran.html" class="icon-button neon">
+                            <i class="fas fa-quran"></i>
+                        </a>
+                        <a href="translate.html" class="icon-button neon">
+                            <i class="fas fa-language"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
+    <!-- Premium Section 1 -->
+  
+    <div class="flex flex-col items-center mt-5 space-y-5">
+        <!-- Premium Section 1 -->
+        <div id="premium-section-1" class="glass-effect rounded-lg shadow-lg w-full max-w-full xl:max-w-4xl p-5 mx-auto">
+            <div class="button-container mb-4">
+                <a href="video.html" class="button-link">
+                    <button class="bg-blue-500 text-white px-3 py-1 rounded-full shadow-md hover:bg-blue-600">Video gallery</button>
+                </a>
+            </div>
+            <h2 class="text-lg font-poppins font-bold text-white">STORY RISKY</h2>
+            <div class="border-2 w-20 border-blue-500 my-3"></div>
+            <p class="text-white">ini hanya sebatas gallery saja</p>
+            <div class="grid grid-cols-3 gap-2">
+                <div class="col-span-1">
+                    <img src="s1.jpg" alt="Image 1" class="w-full h-auto">
+                </div>
+                <div class="col-span-1">
+                    <img src="s5.jpg" alt="Image 5" class="w-full h-auto">
+                </div>
+                <div class="col-span-1">
+                    <img src="s6.jpg" alt="Image 2" class="w-full h-auto">
+                </div>
+                <div class="col-span-1">
+                    <img src="s3.jpg" alt="Image 3" class="w-full h-auto">
+                </div>
+                <div class="col-span-1">
+                    <img src="s4.jpg" alt="Image 4" class="w-full h-auto">
+                </div>
+                <div class="col-span-1">
+                    <img src="s2.jpg" alt="Image 2" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </div>
     
-   
- <!-- Premium Section -->
-    <body class="bg-gray-100">
-   <div id="premium-section" class="p-5 glass-effect rounded-lg shadow-lg mt-5">
-             <div class="button-container">
-                 <a href="video.html" class="button-link">
-                     <button class="bg-blue-500 text-white px-3 py-1 rounded-full shadow-md hover:bg-blue-600">Video galery</button>
-                 </a>
-             </div>
-             <h2 class="text-lg font-poppins font-bold text-blue-500">STORY RISKY</h2>
-             <div class="border-2 w-20 border-blue-500 my-3"></div>
-             <p class="text-white">ini hanya sebatas galery saja</p>
-             <div class="grid grid-cols-3 gap-2">
-                 <div class="col-span-1">
-                     <img src="s1.jpg" alt="Image 1" class="w-full h-auto">
-                 </div>
-                 <div class="col-span-1">
-                     <img src="s5.jpg" alt="Image 5" class="w-full h-auto">
-                 </div>
-                 <div class="col-span-1">
-                     <img src="s6.jpg" alt="Image 2" class="w-full h-auto">
-                 </div>
-                 <div class="col-span-1">
-                     <img src="s3.jpg" alt="Image 3" class="w-full h-auto">
-                 </div>
-                 <div class="col-span-1">
-                     <img src="s4.jpg" alt="Image 4" class="w-full h-auto">
-                 </div>
-                 <div class="col-span-1">
-                     <img src="s2.jpg" alt="Image 2" class="w-full h-auto">
-                 </div>
-             </div>
-         </div>
-     </div>
-
-
-
-     <!-- Premium Section -->
-     <div id="premium-section" class="p-5 glass-effect rounded-lg shadow-lg mt-5">
-        <h2 class="text-lg font-poppins font-bold text-blue-500">my sertifikat</h2>
-        <div class="border-2 w-20 border-blue-500 my-3"></div>
-        <p class="text-white">sertifikat ini di dapat dengan penuh perjuangan dan rasa tanggung jawab yg sangat besar </p>
-        <div class="flex justify-between">
-            <div class="w-1/3 p-2">
-                <img src="sigma.jpg" alt="Image 1" class="w-full h-auto">
-            </div>
-            <div class="w-1/3 p-2">
-                <img src="exis.jpg" alt="Image 2" class="w-full h-auto">
+    
+    
+        <!-- Premium Section 2 -->
+        <div class="flex flex-col items-start mt-5 space-y-5">
+            <!-- Premium Section 2 -->
+            <div id="premium-section-2" class="glass-effect rounded-lg shadow-lg w-full max-w-full xl:max-w-4xl p-5 ml-auto">
+                <h2 class="text-lg font-poppins font-bold text-white">my sertifikat</h2>
+                <div class="border-2 w-20 border-blue-500 my-3"></div>
+                <p class="text-white">sertifikat ini diperoleh dengan penuh perjuangan dan rasa tanggung jawab yang sangat besar</p>
+                <div class="flex justify-between">
+                    <div class="w-1/3 p-2">
+                        <img src="sigma.jpg" alt="Image 1" class="w-full h-auto">
+                    </div>
+                    <div class="w-1/3 p-2">
+                        <img src="exis.jpg" alt="Image 2" class="w-full h-auto">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+        
+
+
     <script>
         // Fungsi untuk kembali ke halaman sebelumnya
         function goBack() {
