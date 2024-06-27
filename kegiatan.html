@@ -151,19 +151,15 @@
             if (description) {
                 const user = firebase.auth().currentUser;
                 if (user) {
-                    const userId = user.uid; // Gunakan UID pengguna sebagai kunci unik
+                    const userId = user.uid;
 
-                    // Buat objek kegiatan
                     const activity = {
                         description: description,
                         timestamp: new Date().toLocaleString(),
-                        username: user.email // Misalnya, gunakan email sebagai username
+                        username: user.email // Gunakan email sebagai contoh, sesuaikan dengan kebutuhan Anda
                     };
 
-                    // Referensi ke path data kegiatan untuk pengguna saat ini
                     const activitiesRef = database.ref('activities/' + userId);
-
-                    // Simpan kegiatan ke Firebase Database
                     activitiesRef.push(activity)
                         .then(() => {
                             alert("Kegiatan berhasil ditambahkan.");
@@ -180,6 +176,7 @@
         }
 
 
+
         function showActivities() {
             const user = firebase.auth().currentUser;
             if (user) {
@@ -189,7 +186,7 @@
                 activitiesRef.once('value', (snapshot) => {
                     const activities = snapshot.val();
                     const activityCards = document.getElementById('activityCards');
-                    activityCards.innerHTML = ''; // Bersihkan kartu kegiatan sebelumnya
+                    activityCards.innerHTML = '';
 
                     if (activities) {
                         Object.keys(activities).forEach((key, index) => {
@@ -197,17 +194,15 @@
                             const card = document.createElement('div');
                             card.classList.add('p-4', 'bg-gray-200', 'rounded', 'shadow-md');
 
-                            // Tampilkan informasi kegiatan
                             const activityInfo = document.createElement('p');
                             activityInfo.textContent = `${index + 1}. ${activity.timestamp} - ${activity.description} oleh ${activity.username}`;
                             card.appendChild(activityInfo);
 
-                            // Tombol hapus kegiatan
                             const deleteButton = document.createElement('button');
                             deleteButton.textContent = 'Hapus Kegiatan';
                             deleteButton.classList.add('bg-red-600', 'text-white', 'py-2', 'px-4', 'rounded', 'hover:bg-red-700', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-offset-2', 'focus:ring-offset-red-200', 'mt-2');
                             deleteButton.onclick = function() {
-                                deleteActivity(key); // Panggil fungsi deleteActivity dengan key kegiatan yang sesuai
+                                deleteActivity(key);
                             };
                             card.appendChild(deleteButton);
 
@@ -220,7 +215,6 @@
                         activityCards.appendChild(card);
                     }
 
-                    // Tampilkan area kegiatan
                     document.getElementById('activities').classList.remove('hidden');
                     document.getElementById('addActivityForm').classList.add('hidden');
                     document.getElementById('deleteActivityForm').classList.add('hidden');
@@ -230,6 +224,7 @@
                 alert("Harap login terlebih dahulu.");
             }
         }
+
 
 
 
