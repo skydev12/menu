@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplikasi Pencatat Kegiatan</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>    
+    <script>
+    // Initialize Firebase
+     const firebaseConfig = {
+        apiKey: "AIzaSyCQfI819PPSMFnOQ_XUja1TrGGs6UA45bM",
+        authDomain: "kegiatan-4f3ba.firebaseapp.com",
+        databaseURL: "https://kegiatan-4f3ba-default-rtdb.firebaseio.com/",
+        projectId: "kegiatan-4f3ba",
+        storageBucket: "kegiatan-4f3ba.appspot.com",
+        messagingSenderId: "363339083660",
+        appId: "1:363339083660:web:64b43ebe7aa132df0970a9"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+</script>
+
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
     <div class="max-w-md w-full bg-white p-8 rounded shadow-md">
@@ -44,7 +62,6 @@
                 <label for="deleteIndex" class="block text-sm font-medium text-gray-700">Indeks Kegiatan yang ingin dihapus</label>
                 <input type="number" id="deleteIndex" name="deleteIndex" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
             </div>
-            <button onclick="deleteActivity()" class="w-full bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-200">Hapus</button>
         </div>
         <div id="homePage" class="hidden">
             <h2 id="greeting" class="text-lg font-semibold mb-2"></h2>
@@ -58,45 +75,70 @@
             const password = document.getElementById('password').value;
 
             if (username && password) {
-                // Check if user already exists
-                const existingUser = localStorage.getItem(username);
-                if (existingUser) {
-                    alert("Akun ini sudah ada. Silakan pilih yang lain.");
-                } else {
-                    // Save user data to localStorage
-                    localStorage.setItem(username, JSON.stringify({ username, password }));
-                    alert(`Pengguna ${username} berhasil didaftarkan.`);
-                }
+                // Register user with Firebase Authentication
+                firebase.auth().createUserWithEmailAndPassword(username, password)
+                    .then((userCredential) => {
+                        // Signed up successfully, save additional data to Firebase Database
+                        const userData = {
+                            username: username,
+                            password: password
+                        };
+                        firebase.database().ref('users/' + userCredential.user.uid).set(userData)
+                            .then(() => {
+                                alert(`Pengguna ${username} berhasil didaftarkan.`);
+                            })
+                            .catch((error) => {
+                                console.error("Error saving user data: ", error);
+                            });
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        alert(errorMessage);
+                    });
             } else {
                 alert("Harap isi username dan password.");
             }
         }
+
 
         function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
             if (username && password) {
-                // Check if user exists
-                const userData = JSON.parse(localStorage.getItem(username));
-                if (userData && userData.password === password) {
-                    alert(`Selamat datang ${username}!`);
-                    // Hide login form and show logged-in section
-                    document.getElementById('loginForm').classList.add('hidden');
-                    document.getElementById('loggedIn').classList.remove('hidden');
-                } else {
-                    alert("Username atau password salah.");
-                }
+                // Login user with Firebase Authentication
+                firebase.auth().signInWithEmailAndPassword(username, password)
+                    .then((userCredential) => {
+                        alert(`Selamat datang ${username}!`);
+                        // Hide login form and show logged-in section
+                        document.getElementById('loginForm').classList.add('hidden');
+                        document.getElementById('loggedIn').classList.remove('hidden');
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        alert(errorMessage);
+                    });
             } else {
                 alert("Harap isi username dan password.");
             }
         }
 
+
         function logout() {
-            // Show login form and hide logged-in section
-            document.getElementById('loggedIn').classList.add('hidden');
-            document.getElementById('loginForm').classList.remove('hidden');
-        }
+    // Logout user from Firebase Authentication
+            firebase.auth().signOut()
+                .then(() => {
+                    // Show login form and hide logged-in section
+                    document.getElementById('loggedIn').classList.add('hidden');
+                    document.getElementById('loginForm').classList.remove('hidden');
+                })
+                .catch((error) => {
+                    console.error("Error logging out: ", error);
+                });
+}
+
 
         function showAddActivityForm() {
             document.getElementById('addActivityForm').classList.remove('hidden');
@@ -114,12 +156,18 @@
                     description: description,
                     timestamp: new Date().toLocaleString()
                 };
-                // Check if activities already exist for current date
-                let activities = JSON.parse(localStorage.getItem(currentDate)) || [];
-                // Add new activity
-                activities.push(activity);
-                localStorage.setItem(currentDate, JSON.stringify(activities));
-                alert("Kegiatan berhasil ditambahkan.");
+
+                // Referensi ke path data kegiatan
+                const activitiesRef = database.ref('activities/' + currentDate);
+
+                // Simpan kegiatan ke Firebase Database
+                activitiesRef.push(activity)
+                    .then(() => {
+                        alert("Kegiatan berhasil ditambahkan.");
+                    })
+                    .catch((error) => {
+                        console.error("Error adding activity: ", error);
+                    });
             } else {
                 alert("Harap isi deskripsi kegiatan.");
             }
@@ -127,27 +175,42 @@
 
         function showActivities() {
             const currentDate = new Date().toISOString().split('T')[0];
-            const activities = JSON.parse(localStorage.getItem(currentDate)) || [];
-            const activityCards = document.getElementById('activityCards');
-            activityCards.innerHTML = ''; // Clear previous activity cards
-            if (activities.length > 0) {
-                activities.forEach((activity, index) => {
+            const activitiesRef = database.ref('activities/' + currentDate);
+
+            activitiesRef.once('value', (snapshot) => {
+                const activities = snapshot.val();
+                const activityCards = document.getElementById('activityCards');
+                activityCards.innerHTML = ''; // Bersihkan kartu kegiatan sebelumnya
+
+                if (activities) {
+                    Object.keys(activities).forEach((key, index) => {
+                        const activity = activities[key];
+                        const card = document.createElement('div');
+                        card.classList.add('p-4', 'bg-gray-200', 'rounded', 'shadow-md');
+                        card.textContent = `${index + 1}. ${activity.timestamp} - ${activity.description}`;
+                        const deleteButton = document.createElement('button');
+                        deleteButton.textContent = 'Hapus';
+                        deleteButton.classList.add('ml-4', 'bg-red-600', 'text-white', 'py-1', 'px-2', 'rounded', 'hover:bg-red-700', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-offset-2', 'focus:ring-offset-red-200');
+                        deleteButton.onclick = () => deleteActivity(key); // Meneruskan key ke fungsi deleteActivity
+                        card.appendChild(deleteButton);
+                        activityCards.appendChild(card);
+                    });
+                } else {
                     const card = document.createElement('div');
                     card.classList.add('p-4', 'bg-gray-200', 'rounded', 'shadow-md');
-                    card.textContent = `${index + 1}. ${activity.timestamp} - ${activity.description}`;
+                    card.textContent = "Tidak ada kegiatan untuk hari ini.";
                     activityCards.appendChild(card);
-                });
-            } else {
-                const card = document.createElement('div');
-                card.classList.add('p-4', 'bg-gray-200', 'rounded', 'shadow-md');
-                card.textContent = "Tidak ada kegiatan untuk hari ini.";
-                activityCards.appendChild(card);
-            }
-            document.getElementById('activities').classList.remove('hidden');
-            document.getElementById('addActivityForm').classList.add('hidden');
-            document.getElementById('deleteActivityForm').classList.add('hidden');
-            document.getElementById('homePage').classList.add('hidden');
+                }
+
+                // Tampilkan area kegiatan
+                document.getElementById('activities').classList.remove('hidden');
+                document.getElementById('addActivityForm').classList.add('hidden');
+                document.getElementById('deleteActivityForm').classList.add('hidden');
+                document.getElementById('homePage').classList.add('hidden');
+            });
         }
+
+
 
         function showDeleteActivityForm() {
             document.getElementById('deleteActivityForm').classList.remove('hidden');
@@ -156,19 +219,22 @@
             document.getElementById('homePage').classList.add('hidden');
         }
 
-        function deleteActivity() {
+        function deleteActivity(key) {
             const currentDate = new Date().toISOString().split('T')[0];
-            const deleteIndex = parseInt(document.getElementById('deleteIndex').value, 10);
-            let activities = JSON.parse(localStorage.getItem(currentDate)) || [];
-            if (deleteIndex >= 0 && deleteIndex < activities.length) {
-                activities.splice(deleteIndex, 1);
-                localStorage.setItem(currentDate, JSON.stringify(activities));
-                alert("Kegiatan berhasil dihapus.");
-                showActivities(); // Refresh the activities list
-            } else {
-                alert("Indeks kegiatan tidak valid.");
-            }
+            const activitiesRef = database.ref('activities/' + currentDate + '/' + key);
+
+            activitiesRef.remove()
+                .then(() => {
+                    alert("Kegiatan berhasil dihapus.");
+                    showActivities(); // Memuat ulang daftar kegiatan setelah penghapusan
+                })
+                .catch((error) => {
+                    console.error("Error deleting activity: ", error);
+                });
         }
+
+
+
 
         function showHomePage() {
             document.getElementById('homePage').classList.remove('hidden');
