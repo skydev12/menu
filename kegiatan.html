@@ -43,7 +43,6 @@
             <button onclick="logout()" class="mb-4 w-full bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-200">Logout</button>
             <button onclick="showAddActivityForm()" class="mb-4 w-full bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200">Tambah Kegiatan</button>
             <button onclick="showActivities()" class="mb-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">Lihat Kegiatan</button>
-            <button onclick="showDeleteActivityForm()" class="mb-4 w-full bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-200">Hapus Kegiatan</button>
             <button onclick="showHomePage()" class="w-full bg-gray-600 text-white py-2 px-4 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-200">Beranda</button>
         </div>
         <div id="addActivityForm" class="hidden">
@@ -150,65 +149,88 @@
         function addActivity() {
             const description = document.getElementById('activityDescription').value;
             if (description) {
-                // Get current date in YYYY-MM-DD format
-                const currentDate = new Date().toISOString().split('T')[0];
-                const activity = {
-                    description: description,
-                    timestamp: new Date().toLocaleString()
-                };
+                const user = firebase.auth().currentUser;
+                if (user) {
+                    const userId = user.uid; // Gunakan UID pengguna sebagai kunci unik
 
-                // Referensi ke path data kegiatan
-                const activitiesRef = database.ref('activities/' + currentDate);
+                    // Buat objek kegiatan
+                    const activity = {
+                        description: description,
+                        timestamp: new Date().toLocaleString(),
+                        username: user.email // Misalnya, gunakan email sebagai username
+                    };
 
-                // Simpan kegiatan ke Firebase Database
-                activitiesRef.push(activity)
-                    .then(() => {
-                        alert("Kegiatan berhasil ditambahkan.");
-                    })
-                    .catch((error) => {
-                        console.error("Error adding activity: ", error);
-                    });
+                    // Referensi ke path data kegiatan untuk pengguna saat ini
+                    const activitiesRef = database.ref('activities/' + userId);
+
+                    // Simpan kegiatan ke Firebase Database
+                    activitiesRef.push(activity)
+                        .then(() => {
+                            alert("Kegiatan berhasil ditambahkan.");
+                        })
+                        .catch((error) => {
+                            console.error("Error adding activity: ", error);
+                        });
+                } else {
+                    alert("Harap login terlebih dahulu.");
+                }
             } else {
                 alert("Harap isi deskripsi kegiatan.");
             }
         }
 
+
         function showActivities() {
-            const currentDate = new Date().toISOString().split('T')[0];
-            const activitiesRef = database.ref('activities/' + currentDate);
+            const user = firebase.auth().currentUser;
+            if (user) {
+                const userId = user.uid;
+                const activitiesRef = database.ref('activities/' + userId);
 
-            activitiesRef.once('value', (snapshot) => {
-                const activities = snapshot.val();
-                const activityCards = document.getElementById('activityCards');
-                activityCards.innerHTML = ''; // Bersihkan kartu kegiatan sebelumnya
+                activitiesRef.once('value', (snapshot) => {
+                    const activities = snapshot.val();
+                    const activityCards = document.getElementById('activityCards');
+                    activityCards.innerHTML = ''; // Bersihkan kartu kegiatan sebelumnya
 
-                if (activities) {
-                    Object.keys(activities).forEach((key, index) => {
-                        const activity = activities[key];
+                    if (activities) {
+                        Object.keys(activities).forEach((key, index) => {
+                            const activity = activities[key];
+                            const card = document.createElement('div');
+                            card.classList.add('p-4', 'bg-gray-200', 'rounded', 'shadow-md');
+
+                            // Tampilkan informasi kegiatan
+                            const activityInfo = document.createElement('p');
+                            activityInfo.textContent = `${index + 1}. ${activity.timestamp} - ${activity.description} oleh ${activity.username}`;
+                            card.appendChild(activityInfo);
+
+                            // Tombol hapus kegiatan
+                            const deleteButton = document.createElement('button');
+                            deleteButton.textContent = 'Hapus Kegiatan';
+                            deleteButton.classList.add('bg-red-600', 'text-white', 'py-2', 'px-4', 'rounded', 'hover:bg-red-700', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-offset-2', 'focus:ring-offset-red-200', 'mt-2');
+                            deleteButton.onclick = function() {
+                                deleteActivity(key); // Panggil fungsi deleteActivity dengan key kegiatan yang sesuai
+                            };
+                            card.appendChild(deleteButton);
+
+                            activityCards.appendChild(card);
+                        });
+                    } else {
                         const card = document.createElement('div');
                         card.classList.add('p-4', 'bg-gray-200', 'rounded', 'shadow-md');
-                        card.textContent = `${index + 1}. ${activity.timestamp} - ${activity.description}`;
-                        const deleteButton = document.createElement('button');
-                        deleteButton.textContent = 'Hapus';
-                        deleteButton.classList.add('ml-4', 'bg-red-600', 'text-white', 'py-1', 'px-2', 'rounded', 'hover:bg-red-700', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-offset-2', 'focus:ring-offset-red-200');
-                        deleteButton.onclick = () => deleteActivity(key); // Meneruskan key ke fungsi deleteActivity
-                        card.appendChild(deleteButton);
+                        card.textContent = "Tidak ada kegiatan untuk saat ini.";
                         activityCards.appendChild(card);
-                    });
-                } else {
-                    const card = document.createElement('div');
-                    card.classList.add('p-4', 'bg-gray-200', 'rounded', 'shadow-md');
-                    card.textContent = "Tidak ada kegiatan untuk hari ini.";
-                    activityCards.appendChild(card);
-                }
+                    }
 
-                // Tampilkan area kegiatan
-                document.getElementById('activities').classList.remove('hidden');
-                document.getElementById('addActivityForm').classList.add('hidden');
-                document.getElementById('deleteActivityForm').classList.add('hidden');
-                document.getElementById('homePage').classList.add('hidden');
-            });
+                    // Tampilkan area kegiatan
+                    document.getElementById('activities').classList.remove('hidden');
+                    document.getElementById('addActivityForm').classList.add('hidden');
+                    document.getElementById('deleteActivityForm').classList.add('hidden');
+                    document.getElementById('homePage').classList.add('hidden');
+                });
+            } else {
+                alert("Harap login terlebih dahulu.");
+            }
         }
+
 
 
 
@@ -220,18 +242,24 @@
         }
 
         function deleteActivity(key) {
-            const currentDate = new Date().toISOString().split('T')[0];
-            const activitiesRef = database.ref('activities/' + currentDate + '/' + key);
+            const user = firebase.auth().currentUser;
+            if (user) {
+                const userId = user.uid; // Dapatkan UID pengguna yang sedang login
+                const activitiesRef = database.ref('activities/' + userId + '/' + key); // Path ke kegiatan yang sesuai
 
-            activitiesRef.remove()
-                .then(() => {
-                    alert("Kegiatan berhasil dihapus.");
-                    showActivities(); // Memuat ulang daftar kegiatan setelah penghapusan
-                })
-                .catch((error) => {
-                    console.error("Error deleting activity: ", error);
-                });
+                activitiesRef.remove()
+                    .then(() => {
+                        alert("Kegiatan berhasil dihapus.");
+                        showActivities(); // Memuat ulang daftar kegiatan setelah penghapusan
+                    })
+                    .catch((error) => {
+                        console.error("Error deleting activity: ", error);
+                    });
+            } else {
+                alert("Harap login terlebih dahulu.");
+            }
         }
+
 
 
 
