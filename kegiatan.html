@@ -8,6 +8,42 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>    
+    <style>
+        /* Background Image */
+        body {
+            background-image: url('p.jpg'); /* Ganti dengan path yang sesuai */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Glassmorphism for Cards */
+        .glass-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Glassmorphism for Buttons */
+        .glass-button {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
+        }
+    </style>
     <script>
     // Initialize Firebase
      const firebaseConfig = {
@@ -25,7 +61,7 @@
 
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="max-w-md w-full bg-white p-8 rounded shadow-md">
+    <div class="max-w-md w-full glass-card p-8 rounded shadow-md">
         <h1 class="text-3xl font-semibold text-center mb-4">Aplikasi Pencatat Kegiatan</h1>
         <div id="loginForm">
             <div class="mb-4">
@@ -36,25 +72,25 @@
                 <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
                 <input type="password" id="password" name="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
             </div>
-            <button onclick="register()" class="mb-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">Daftar</button>
-            <button onclick="login()" class="w-full bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200">Login</button>
+            <button onclick="register()" class="mb-4 w-full glass-button text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">Daftar</button>
+            <button onclick="login()" class="w-full glass-button text-white py-2 px-4 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200">Login</button>
         </div>
         <div id="loggedIn" class="hidden">
-            <button onclick="logout()" class="mb-4 w-full bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-200">Logout</button>
-            <button onclick="showAddActivityForm()" class="mb-4 w-full bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200">Tambah Kegiatan</button>
-            <button onclick="showActivities()" class="mb-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">Lihat Kegiatan</button>
-            <button onclick="showHomePage()" class="w-full bg-gray-600 text-white py-2 px-4 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-200">Beranda</button>
+            <button onclick="logout()" class="mb-4 w-full glass-button text-white py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-200">Logout</button>
+            <button onclick="showAddActivityForm()" class="mb-4 w-full glass-button text-white py-2 px-4 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200">Tambah Kegiatan</button>
+            <button onclick="showActivities()" class="mb-4 w-full glass-button text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">Lihat Kegiatan</button>
+            <button onclick="showHomePage()" class="w-full glass-button text-white py-2 px-4 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-200">Beranda</button>
         </div>
         <div id="addActivityForm" class="hidden">
             <div class="mb-4">
                 <label for="activityDescription" class="block text-sm font-medium text-gray-700">Deskripsi Kegiatan</label>
                 <input type="text" id="activityDescription" name="activityDescription" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
             </div>
-            <button onclick="addActivity()" class="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-200">Simpan</button>
+            <button onclick="addActivity()" class="w-full glass-button text-white py-2 px-4 rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-200">Simpan</button>
         </div>
         <div id="activities" class="hidden">
             <div id="activityCards" class="grid gap-4"></div>
-            <button onclick="showHomePage()" class="w-full bg-gray-600 text-white py-2 px-4 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-200 mt-4">Kembali</button>
+            <button onclick="showHomePage()" class="w-full glass-button text-white py-2 px-4 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-200 mt-4">Kembali</button>
         </div>
         <div id="deleteActivityForm" class="hidden">
             <div class="mb-4">
@@ -191,7 +227,7 @@
                         Object.keys(activities).forEach((key, index) => {
                             const activity = activities[key];
                             const card = document.createElement('div');
-                            card.classList.add('p-4', 'bg-gray-200', 'rounded', 'shadow-md');
+                            card.classList.add('p-4', 'glass-card');
 
                             const activityInfo = document.createElement('p');
                             activityInfo.textContent = `${index + 1}. ${activity.timestamp} - ${activity.description} oleh ${activity.username}`;
@@ -199,7 +235,7 @@
 
                             const deleteButton = document.createElement('button');
                             deleteButton.textContent = 'Hapus Kegiatan';
-                            deleteButton.classList.add('bg-red-600', 'text-white', 'py-2', 'px-4', 'rounded', 'hover:bg-red-700', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-offset-2', 'focus:ring-offset-red-200', 'mt-2');
+                            deleteButton.classList.add('glass-button', 'text-white', 'py-2', 'px-4', 'rounded', 'hover:bg-red-700', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-offset-2', 'focus:ring-offset-red-200', 'mt-2');
                             deleteButton.onclick = function() {
                                 deleteActivity(key);
                             };
@@ -209,7 +245,7 @@
                         });
                     } else {
                         const card = document.createElement('div');
-                        card.classList.add('p-4', 'bg-gray-200', 'rounded', 'shadow-md');
+                        card.classList.add('p-4', 'glass-card');
                         card.textContent = "Tidak ada kegiatan untuk saat ini.";
                         activityCards.appendChild(card);
                     }
