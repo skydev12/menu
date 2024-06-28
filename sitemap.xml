@@ -7,49 +7,55 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://riskyx.my.id/kegiatan</loc>
+    <loc>https://riskyx.my.id/kegiatan.html</loc>
     <lastmod>2024-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
    <url>
-    <loc>https://riskyx.my.id/kalku</loc>
+    <loc>https://riskyx.my.id/kalku.html</loc>
     <lastmod>2024-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
-    <loc>https://riskyx.my.id/kalender</loc>
+    <loc>https://riskyx.my.id/kalender.html</loc>
     <lastmod>2024-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
-    <loc>https://riskyx.my.id/marketplace</loc>
+    <loc>https://riskyx.my.id/marketplace.html</loc>
     <lastmod>2024-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
-    <loc>https://riskyx.my.id/musik</loc>
+    <loc>https://riskyx.my.id/musik.html</loc>
     <lastmod>2024-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
-    <loc>https://riskyx.my.id/elearning</loc>
+    <loc>https://riskyx.my.id/elearning.html</loc>
     <lastmod>2024-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
-    <loc>https://riskyx.my.id/alquran</loc>
+    <loc>https://riskyx.my.id/alquran.html</loc>
     <lastmod>2024-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
-    <loc>https://riskyx.my.id/translate</loc>
+    <loc>https://riskyx.my.id/translate.html</loc>
+    <lastmod>2024-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+   <url>
+    <loc>https://riskyx.my.id/video.html</loc>
     <lastmod>2024-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
