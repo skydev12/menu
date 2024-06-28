@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://riskyx.my.id/sitemap.xml
