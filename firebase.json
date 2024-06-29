@@ -9,7 +9,7 @@
       "rewrites": [
         {
           "source": "**",
-          "destination": "/skyprivatehtml.html"
+          "destination": "/skyprivate.html"
         }
       ]
     }
