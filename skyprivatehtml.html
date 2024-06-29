@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music App</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto py-8">
+    <div id="login-section" class="max-w-md mx-auto bg-white p-6 rounded shadow">
+      <h2 class="text-2xl font-bold mb-4">Login</h2>
+      <input id="username" type="text" placeholder="Username" class="border p-2 w-full mb-4">
+      <input id="password" type="password" placeholder="Password" class="border p-2 w-full mb-4">
+      <button id="login-button" class="bg-blue-500 text-white py-2 px-4 rounded w-full">Login</button>
+      <p id="login-error" class="text-red-500 mt-4 hidden">Invalid credentials</p>
+    </div>
+
+    <div id="music-section" class="max-w-md mx-auto bg-white p-6 rounded shadow hidden">
+      <h2 class="text-2xl font-bold mb-4">Upload Music</h2>
+      <input id="music-file" type="file" class="mb-4">
+      <button id="upload-button" class="bg-green-500 text-white py-2 px-4 rounded w-full">Upload</button>
+      <h3 class="text-xl font-bold mt-6 mb-4">Your Music</h3>
+      <ul id="music-list" class="list-disc pl-5"></ul>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import { getStorage, ref, uploadBytes, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDxkwZcUqtUAWnOdpz56pn2kugMSQpJPVQ",
+        authDomain: "musik-bc516.firebaseapp.com",
+        projectId: "musik-bc516",
+        storageBucket: "musik-bc516.appspot.com",
+        messagingSenderId: "630518202610",
+        appId: "1:630518202610:web:9a73d20e81f162c870106b",
+};
+
+
+      const app = initializeApp(firebaseConfig);
+      const storage = getStorage(app);
+      const auth = getAuth(app);
+
+      const allowedUsers = {
+        "user1@gmail.com": "password1",
+        "user2": "password2",
+        "user3": "password3"
+      };
+
+      document.getElementById("login-button").addEventListener("click", () => {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        signInWithEmailAndPassword(auth, username, password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            document.getElementById("login-section").classList.add("hidden");
+            document.getElementById("music-section").classList.remove("hidden");
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            document.getElementById("login-error").classList.remove("hidden");
+          });
+      });
+
+      document.getElementById("upload-button").addEventListener("click", () => {
+        const file = document.getElementById("music-file").files[0];
+        if (!file) return;
+
+        const storageRef = ref(storage, `music/${file.name}`);
+        uploadBytes(storageRef, file).then(() => {
+          alert("File uploaded successfully!");
+          displayMusicList();
+        });
+      });
+
+      function displayMusicList() {
+        const storageRef = ref(storage, 'music/');
+        listAll(storageRef).then((result) => {
+          const list = document.getElementById("music-list");
+          list.innerHTML = '';
+          result.items.forEach((itemRef) => {
+            getDownloadURL(itemRef).then((url) => {
+              const li = document.createElement("li");
+              const link = document.createElement("a");
+              const playButton = document.createElement("button");
+              const stopButton = document.createElement("button");
+
+              link.href = url;
+              link.textContent = itemRef.name;
+              link.target = "_blank";
+
+              playButton.textContent = "Play";
+              playButton.classList.add("ml-2", "bg-blue-500", "text-white", "py-1", "px-2", "rounded");
+              playButton.addEventListener("click", () => {
+                playMusic(url);
+              });
+
+              stopButton.textContent = "Stop";
+              stopButton.classList.add("ml-2", "bg-red-500", "text-white", "py-1", "px-2", "rounded");
+              stopButton.addEventListener("click", () => {
+                stopMusic();
+              });
+
+              li.appendChild(link);
+              li.appendChild(playButton);
+              li.appendChild(stopButton);
+              list.appendChild(li);
+            });
+          });
+        });
+      }
+
+      let currentAudio;
+
+      function playMusic(url) {
+        if (currentAudio) {
+          currentAudio.pause();
+        }
+        currentAudio = new Audio(url);
+        currentAudio.play().then(() => {
+          console.log("Audio playing");
+        }).catch((error) => {
+          console.error("Error playing audio:", error);
+          alert("Error playing audio. Please check console for details.");
+        });
+      }
+
+      function pauseMusic() {
+        if (currentAudio) {
+          currentAudio.pause();
+        }
+      }
+
+      function stopMusic() {
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+        }
+      }
+
+      window.onload = displayMusicList;
+    </script>
+  </div>
+</body>
+</html>
