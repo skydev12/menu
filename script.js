@@ -17,7 +17,7 @@ function getSurat() {
                 `;
             });
             
-            const listSurat = document.querySelector('.card-surat');
+            const listSurat = document.querySelector('.row.card-surat');
             listSurat.innerHTML = cardSurat;
             console.log(response);
         })
