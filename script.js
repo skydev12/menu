@@ -1,6 +1,11 @@
 function getSurat() {
     fetch('https://equran.id/api/surat')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
         .then(response => {
             let cardSurat = '';
             response.forEach(surat => {
@@ -16,7 +21,7 @@ function getSurat() {
                 </div>
                 `;
             });
-            
+
             const listSurat = document.querySelector('.row.card-surat');
             listSurat.innerHTML = cardSurat;
             console.log(response);
